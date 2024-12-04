@@ -1,3 +1,5 @@
+module.exports = { generateRandomEmail, generateRandomPassword, generateRandomString };
+
 function generateRandomEmail(number) {
     return `Testuser${number}@test.dk`;
   }
@@ -6,20 +8,22 @@ function generateRandomEmail(number) {
     const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowercase = 'abcdefghijklmnopqrstuvwxyz';
     const numbers = '0123456789';
-    const specialChars = '!@#$%^&*()_+[]{}|;:,.<>?';
+    const specialChars = '!@#$%?';
     const allChars = uppercase + lowercase + numbers + specialChars;
   
     const getRandomChar = (str) => str[Math.floor(Math.random() * str.length)];
   
     let password = '';
-    password += getRandomChar(uppercase);
-    password += getRandomChar(numbers);
-    password += getRandomChar(specialChars);
+    password += getRandomChar(uppercase);      // Add uppercase letter
+    password += getRandomChar(lowercase);      // Add lowercase letter
+    password += getRandomChar(numbers);       // Add a number
+    password += getRandomChar(specialChars);  // Add a special character
   
-    // Fill the remaining characters randomly (at least 8 characters)
     for (let i = password.length; i < 8; i++) {
       password += getRandomChar(allChars);
     }
+  
+    return password;
   }
 
   function generateRandomString(num, length) {

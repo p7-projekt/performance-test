@@ -1,10 +1,15 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
+const { generateRandomString } = require('./randomGenerators.js');
+
+
+module.exports = { generateRandomClassrooms };
+
 async function generateRandomClassrooms(numberOfClassrooms, token){
   for (let i = 1; i <= numberOfClassrooms; i++) {
-    console.log(`Processing classroom ${i}`);
-    createRandomClassroom(i, token);
+    await createRandomClassroom(i, token);
+    await activateClassroom(i, token);
   }
-  return fetchClassroomIds(token);
+  return await fetchClassroomIds(token);
 }
 
 async function createRandomClassroom(classNumber, token) {
@@ -24,11 +29,15 @@ async function createRandomClassroom(classNumber, token) {
       }),
     };
     try {
-        const response = await fetch(url, options);
-        const data = await response.json();
-        console.log('Classroom created successfully:', data);
-      } catch (error) {
-        console.error('Error creating classroom:', error);
+      const response = await fetch(url, options);
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+    } catch (error) {
+      console.error('Error during classroom creation:', error);
+      throw error;
     }
 }
 
@@ -54,5 +63,36 @@ async function fetchClassroomIds(token) {
     return ids;
   } catch (error) {
     console.error('Error fetching classroom IDs:', error);
+  }
+}
+
+async function activateClassroom(classNumber, token) {
+  const url = `http://localhost:5015/v2/classrooms/${classNumber}`;
+  const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
+  const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
+  const registrationOpen = true
+
+  const options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`, // Add Bearer token for authorization
+    },
+    body: JSON.stringify({
+      title,
+      description,
+      registrationOpen,
+    }),
+  };
+  try {
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+  } catch (error) {
+    console.error('Error during classroom opening:', error);
+    throw error;
   }
 }

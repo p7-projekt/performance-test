@@ -1,17 +1,22 @@
 const { login, createRandomUsers } = require('./generateUsers');
 const { generateRandomClassrooms } = require('./generateClassrooms');
 const { createSessionsForAllClassrooms } = require('./generateSessions');
+const { Console } = require('console');
 
+module.exports = { generateSetup };
 
 async function generateSetup(numberOfUsers, numberOfClassrooms){
-    token = login("admin@p7.dk", "Admin!1234");
-    const userIds = []
-    userIds = createRandomUsers(numberOfUsers);
+    token = await login("admin@p7.dk", "Admin!1234");
+    let userIds = []
+    userIds = await createRandomUsers(numberOfUsers);
+    console.log("User ids collected");
     //Generate classrooms
-    const classRoomIds = generateRandomClassrooms(numberOfClassrooms, token)
+    const classRoomIds = await generateRandomClassrooms(numberOfClassrooms, token)
+    console.log("ClassRooms created")
     //Generate sessions on classrooms
-    createSessionsForAllClassrooms(classRoomIds, token);
-    return distributeStudentsToSessions(userIds, classRoomIds, token);
+    await createSessionsForAllClassrooms(classRoomIds, token);
+    console.log("Sessions in classrooms created");
+    return await distributeStudentsToSessions(userIds, classRoomIds, token);
 }
 
 async function fetchClassroomDetails(token, classroomId) {
@@ -53,7 +58,6 @@ async function fetchClassroomDetails(token, classroomId) {
       if (!response.ok) {
         throw new Error(`Failed to join classroom. Status: ${response.status}`);
       }
-      console.log(`Student joined classroom with room code: ${roomCode}`);
     } catch (error) {
       console.error(`Error joining classroom with room code ${roomCode}:`, error);
     }

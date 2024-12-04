@@ -1,11 +1,15 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
+const { generateRandomEmail, generateRandomPassword } = require('./randomGenerators.js');
+
+
+module.exports = { login, createRandomUsers };
 
 async function createRandomUsers(numberOfUsers){
     const results = []
     for (let i = 1; i <= numberOfUsers; i++) {
-        console.log(`Processing user ${i}`);
-        results.push(createRandomUser(i));
+        results.push(await createRandomUser(i));
     }
+    return results;
 }
 
 async function createRandomUser(number) {
@@ -25,14 +29,12 @@ async function createRandomUser(number) {
       }),
     };
   
-    try {
-      const response = await fetch(url, options);
-      const data = await response.json();
-      console.log('User created successfully:', data);
-    } catch (error) {
-      console.error('Error creating user:', error);
+    const response = await fetch(url, options);
+    if(response.status === 200){
+      return await (login(email, password));
     }
-    return (login(email, password));
+    else
+    console.error("register failed");
   }
 
   async function login(email, password) {
@@ -54,7 +56,6 @@ async function createRandomUser(number) {
       }
   
       const data = await response.json();
-      console.log('Login successful:', data);
       return data.token; // Return the token
     } catch (error) {
       console.error('Error during login:', error);

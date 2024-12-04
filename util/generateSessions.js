@@ -1,15 +1,20 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
+const { generateRandomString } = require('./randomGenerators.js');
+
+
+module.exports = { createSessionsForAllClassrooms };
+
 async function createSession(token, classroomId, sessionNumber) {
     const url = `http://localhost:5015/v2/classrooms/${classroomId}/session`;
   
     // Generate session data directly inside this function
     const sessionData = {
-      title: generateRandomString(sessionNumber, 60), // Random title
+      title: generateRandomString(sessionNumber, 30), // Random title
       description: generateRandomString(20), // Random description
       exerciseIds: Array.from({ length: 10 }, (_, i) => i + 1), // [1, 2, ..., 10]
       languageIds: [1, 2], // Static language IDs
     };
-  
+
     const options = {
       method: 'POST',
       headers: {
@@ -18,14 +23,13 @@ async function createSession(token, classroomId, sessionNumber) {
       },
       body: JSON.stringify(sessionData),
     };
-  
+
+    const response = await fetch(url, options);
+
     try {
-      const response = await fetch(url, options);
       if (!response.ok) {
-        throw new Error(`Failed to create session. Status: ${response.status}`);
+        throw new Error(`Failed to create session. Status: ${response.text()}`);
       }
-      const data = await response.json();
-      console.log(`Session created for classroom ${classroomId}:`, data);
     } catch (error) {
       console.error(`Error creating session for classroom ${classroomId}:`, error);
     }

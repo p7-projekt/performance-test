@@ -19,6 +19,7 @@ export function setup() {
 export default function (data) {
 	const user = data[__VU];
 	let exercise = getExercise();
+	console.log(`HERE:${user}, ${exercise}`);
 	const url = `http://localhost:80/v2/exercises/${exercise.payload.exerciseId}/submission`;
 	const params = {
 		headers: {

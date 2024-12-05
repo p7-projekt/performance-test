@@ -1,7 +1,7 @@
 import http from "k6/http";
 import { check, sleep } from "k6";
-import { getExercise } from "../exercises/exercise";
-import { generateSetup } from "../util/setup";
+import { getExercise } from "../exercises/exercise.js";
+import { generateSetup } from "../util/setup.js";
 
 export const options = {
 	stages: [

@@ -104,7 +104,7 @@ function equalStrings() {
 	return {
 		name: "Equal Strings",
 		description: "Check if two strings are equal",
-		solution: "def solution(s1: str, s2: str):\n    return s == s",
+		solution: "def solution(s1: str, s2: str):\n    return s1 == s2",
 		solutionLanguage: 2,
 		inputParameterType: ["string", "string"],
 		outputParamaterType: ["bool"],

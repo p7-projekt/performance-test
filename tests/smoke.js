@@ -1,5 +1,4 @@
 import http from "k6/http";
-import { SharedArray } from "k6/data";
 import { check, sleep } from "k6";
 import { getExercise } from "../exercises/exercise.js";
 import { generateSetup } from "../util/setup.js";
@@ -12,9 +11,11 @@ export const options = {
 	],
 };
 
-const data = new SharedArray("users", generateSetup(200, 2));
+export function setup() {
+	return generateSetup(200, 2);
+}
 
-export default function () {
+export default function (data) {
 	const user = data[__VU];
 	let exercise = getExercise();
 	const url = `http://localhost:80/v2/exercises/${exercise.payload.exerciseId}/submission`;

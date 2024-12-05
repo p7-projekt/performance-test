@@ -66,7 +66,7 @@ export async function distributeStudentsToSessions(studentTokens, classroomIds, 
 }
 
 export async function fetchClassroomDetails(token, classroomId) {
-  const url = `http://10.92.1.109:5015/v2/classrooms/${classroomId}`;
+  const url = `http://localhost:5015/v2/classrooms/${classroomId}`;
 
   const options = {
     headers: {
@@ -90,7 +90,7 @@ export async function fetchClassroomDetails(token, classroomId) {
 }
 
 export async function joinClassroom(token, roomCode) {
-  const url = 'http://10.92.1.109:5015/join';
+  const url = 'http://localhost:5015/join';
   const payload = JSON.stringify({ code: roomCode, name: `Student${token}` });
 
   const options = {

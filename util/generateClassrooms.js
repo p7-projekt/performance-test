@@ -11,7 +11,7 @@ export async function generateRandomClassrooms(numberOfClassrooms, token) {
 }
 
 export async function createRandomClassroom(classNumber, token) {
-  const url = 'http://10.92.1.109:5015/v2/classrooms';
+  const url = 'http://localhost:5015/v2/classrooms';
   const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
   const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
 
@@ -40,7 +40,7 @@ export async function createRandomClassroom(classNumber, token) {
 }
 
 export async function fetchClassroomIds(token) {
-  const url = 'http://10.92.1.109:5015/v2/classrooms';
+  const url = 'http://localhost:5015/v2/classrooms';
 
   const options = {
     headers: {
@@ -65,7 +65,7 @@ export async function fetchClassroomIds(token) {
 }
 
 export async function activateClassroom(classNumber, token) {
-  const url = `http://10.92.1.109:5015/v2/classrooms/${classNumber}`;
+  const url = `http://localhost:5015/v2/classrooms/${classNumber}`;
   const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
   const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
   const registrationOpen = true;

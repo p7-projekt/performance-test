@@ -4,6 +4,7 @@ import { getExercise } from "../exercises/exercise.js";
 import { generateSetup } from "../util/setup.js";
 
 export const options = {
+	setupTimeout: "30m",
 	stages: [
 		{ duration: "1m", target: 200 },
 		{ duration: "5m", target: 200 },

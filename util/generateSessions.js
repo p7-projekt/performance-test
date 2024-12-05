@@ -3,7 +3,7 @@ import { check } from 'k6';
 import { generateRandomString } from './randomGenerators.js';
 
 export async function createSession(token, classroomId, sessionNumber) {
-    const url = `http://localhost:5015/v2/classrooms/${classroomId}/session`;
+    const url = `http://localhost:80/v2/classrooms/${classroomId}/session`;
   
     // Generate session data directly inside this function
     const sessionData = {
@@ -41,7 +41,7 @@ export async function createSessionsForAllClassrooms(classroomIds, token) {
 }
 
 export async function createExercises(exercises, token) {
-    const url = 'http://localhost:5015/v1/exercises';
+    const url = 'http://localhost:80/v1/exercises';
   
     // Iterate over the exercises array and send a POST request for each
     for (const exercise of exercises) {

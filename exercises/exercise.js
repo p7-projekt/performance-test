@@ -41,4 +41,49 @@ export function getExercise() {
 			return stringLengthExercise();
 	}
 }
+
+// Checks a correct solutions response.
+export function checkCorrect(response) {
+	return response.json().result === "pass";
+}
+
+// Checks a wrong answer solutions response.
+export function checkWrongAnswer(response) {
+	return response
+		.json()
+		.testCaseResults.some((testCase) => testCase.cause === "wrongAnswer");
+}
+
+// Checks a runtime error solutions response.
+export function checkRuntimeError(response) {
+	return (
+		response.json().result === "failure" &&
+		response
+			.json()
+			.testCaseResults.some((testCase) => testCase.cause === "runtimeError")
+	);
+}
+
+// Checks a compile time error solutions response.
+export function checkCompileError(response) {
+	return (
+		response.json().result === "error" &&
+		response.json().message.startsWith("an error occurred during compilation")
+	);
+}
+
+// Checks an execution timeout solutions response.
+export function checkExecutionTimeout(response) {
+	return (
+		response.json().result === "error" &&
+		response.json().message === "execution exceeded the timeout limit of 5s"
+	);
+}
+
+// Checks a syntax error solutions response.
+export function checkSyntaxError(response) {
+	return (
+		response.json().result === "error" &&
+		response.json().message.startsWith("an error occured during execution")
+	);
 }

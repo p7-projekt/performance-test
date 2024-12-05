@@ -38,7 +38,7 @@ export const options = {
 };
 
 export default function () {
-	const url = "http://localhost:8080/submit";
+	const url = "http://10.92.1.109:8080/submit";
 	const solution = getSolution();
 	const params = {
 		headers: {

@@ -3,7 +3,7 @@ import { check } from 'k6';
 import { generateRandomEmail, generateRandomPassword } from './randomGenerators.js';
 
 export async function login(email, password) {
-    const url = 'http://localhost:5015/login';
+    const url = 'http://10.92.1.109:5015/login';
   
     const options = {
       headers: {
@@ -43,7 +43,7 @@ export async function createRandomUsers(numberOfUsers) {
 }
 
 export async function createRandomUser(number) {
-    const url = 'http://localhost:5015/register'; // Update to correct k9s service
+    const url = 'http://10.92.1.109:5015/register'; // Update to correct k9s service
     const email = generateRandomEmail(number);
     const password = generateRandomPassword();
     const confirmPassword = password;

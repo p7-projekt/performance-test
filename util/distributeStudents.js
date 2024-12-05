@@ -15,7 +15,7 @@ export async function distributeStudentsToSessions(studentTokens, classroomIds, 
         sessions: data.sessions.map(session => session.id),
       });
     } catch (error) {
-      throw new Error(`Failed to fetch details for classroom ${classroomId}`);
+      throw new Error(`Failed to fetch details for classroom ${classroomId},,,${error}`);
     }
   }
 

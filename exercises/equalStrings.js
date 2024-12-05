@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell equal strings exercise status": (r) => r.status === 200,
 		"haskell equal strings exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check, 3);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Wrong answer Haskell solution.
@@ -67,7 +67,7 @@ function wrongAnswerHaskell() {
 		"haskell equal strings exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check, 3);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Runtime error Haskell solution.
@@ -80,7 +80,7 @@ function runtimeErrorHaskell() {
 		"haskell equal strings exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check, 3);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Compilation error Haskell solution.
@@ -93,7 +93,7 @@ function compilationErrorHaskell() {
 		"haskell equal strings exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check, 3);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Execution timeout Haskell solution.
@@ -106,7 +106,7 @@ function executionTimeoutHaskell() {
 		"haskell equal strings exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 3);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Gets a Python solution attempt from the Equal Strings exercise.
@@ -140,7 +140,7 @@ function correctPython() {
 		"python equal strings exercise correct status": (r) => r.status === 200,
 		"python equal strings exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check, 3);
+	return newPythonSolution(solution, check, 4);
 }
 
 // Wrong answer Python solution.
@@ -152,7 +152,7 @@ function wrongAnswerPython() {
 		"python equal strings exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check, 3);
+	return newPythonSolution(solution, check, 4);
 }
 
 // Runtime error Python solution.
@@ -164,7 +164,7 @@ function runtimeErrorPython() {
 		"python equal strings exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check, 3);
+	return newPythonSolution(solution, check, 4);
 }
 
 // Syntax error Python solution.
@@ -176,7 +176,7 @@ function syntaxErrorPython() {
 		"python equal strings exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check, 3);
+	return newPythonSolution(solution, check, 4);
 }
 
 // Execution timeout Python solution.
@@ -189,5 +189,5 @@ function executionTimeoutPython() {
 		"python equal strings exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 3);
+	return newHaskellSolution(solution, check, 4);
 }

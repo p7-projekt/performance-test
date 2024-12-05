@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell area exercise status": (r) => r.status === 200,
 		"haskell area exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check, 1);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Wrong answer Haskell solution.
@@ -65,7 +65,7 @@ function wrongAnswerHaskell() {
 		"haskell area exercise wrong answer status": (r) => r.status === 400,
 		"haskell area exercise wrong answer result": (r) => checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check, 1);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Runtime error Haskell solution.
@@ -76,7 +76,7 @@ function runtimeErrorHaskell() {
 		"haskell area exercise runtime error status": (r) => r.status === 400,
 		"haskell area exercise runtime error result": (r) => checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check, 1);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Compilation error Haskell solution.
@@ -88,7 +88,7 @@ function compilationErrorHaskell() {
 		"haskell area exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check, 1);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Execution timeout Haskell solution.
@@ -100,7 +100,7 @@ function executionTimeoutHaskell() {
 		"haskell area exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 1);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Gets a Python solution attempt from the Area exercise.
@@ -134,7 +134,7 @@ function correctPython() {
 		"python area exercise correct status": (r) => r.status === 200,
 		"python area exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check, 1);
+	return newPythonSolution(solution, check, 2);
 }
 
 // Wrong answer Python solution.
@@ -144,7 +144,7 @@ function wrongAnswerPython() {
 		"python area exercise wrong answer status": (r) => r.status === 400,
 		"python area exercise wrong answer result": (r) => checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check, 1);
+	return newPythonSolution(solution, check, 2);
 }
 
 // Runtime error Python solution.
@@ -154,7 +154,7 @@ function runtimeErrorPython() {
 		"python area exercise runtime error status": (r) => r.status === 400,
 		"python area exercise runtime error result": (r) => checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check, 1);
+	return newPythonSolution(solution, check, 2);
 }
 
 // Syntax error Python solution.
@@ -164,7 +164,7 @@ function syntaxErrorPython() {
 		"python area exercise syntax error status": (r) => r.status === 400,
 		"python area exercise syntax error result": (r) => checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check, 1);
+	return newPythonSolution(solution, check, 2);
 }
 
 // Execution timeout Python solution.
@@ -176,5 +176,5 @@ function executionTimeoutPython() {
 		"python area exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 1);
+	return newHaskellSolution(solution, check, 2);
 }

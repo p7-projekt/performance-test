@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell vowel count exercise status": (r) => r.status === 200,
 		"haskell vowel count exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Wrong answer Haskell solution.
@@ -66,7 +66,7 @@ function wrongAnswerHaskell() {
 		"haskell vowel count exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Runtime error Haskell solution.
@@ -79,7 +79,7 @@ function runtimeErrorHaskell() {
 		"haskell vowel count exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Compilation error Haskell solution.
@@ -92,7 +92,7 @@ function compilationErrorHaskell() {
 		"haskell vowel count exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Execution timeout Haskell solution.
@@ -105,7 +105,7 @@ function executionTimeoutHaskell() {
 		"haskell vowel count exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Gets a Python solution attempt from the Vowel Count exercise.
@@ -140,7 +140,7 @@ function correctPython() {
 		"python vowel count exercise correct status": (r) => r.status === 200,
 		"python vowel count exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 9);
 }
 
 // Wrong answer Python solution.
@@ -151,7 +151,7 @@ function wrongAnswerPython() {
 		"python vowel count exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 9);
 }
 
 // Runtime error Python solution.
@@ -162,7 +162,7 @@ function runtimeErrorPython() {
 		"python vowel count exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 9);
 }
 
 // Syntax error Python solution.
@@ -173,7 +173,7 @@ function syntaxErrorPython() {
 		"python vowel count exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 9);
 }
 
 // Execution timeout Python solution.
@@ -186,5 +186,5 @@ function executionTimeoutPython() {
 		"python vowel count exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 9);
 }

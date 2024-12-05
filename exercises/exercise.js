@@ -9,20 +9,22 @@ import { areaExercise } from "./area.js";
 import { equalStringsExercise } from "./equalStrings.js";
 import { signDetectorExercise } from "./signDetector.js";
 
-export function newHaskellSolution(solution, check) {
+export function newHaskellSolution(solution, check, exerciseId) {
 	return {
 		payload: {
 			solution,
+			exerciseId,
 			languageId: 1,
 		},
 		check,
 	};
 }
 
-export function newPythonSolution(solution, check) {
+export function newPythonSolution(solution, check, exerciseId) {
 	return {
 		payload: {
 			solution,
+			exerciseId,
 			languageId: 2,
 		},
 		check,

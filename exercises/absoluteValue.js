@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell absolute value exercise status": (r) => r.status === 200,
 		"haskell absolute value exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 0);
 }
 
 // Wrong answer Haskell solution.
@@ -67,7 +67,7 @@ function wrongAnswerHaskell() {
 		"haskell absolute value exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 0);
 }
 
 // Runtime error Haskell solution.
@@ -80,7 +80,7 @@ function runtimeErrorHaskell() {
 		"haskell absolute value exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 0);
 }
 
 // Compilation error Haskell solution.
@@ -93,7 +93,7 @@ function compilationErrorHaskell() {
 		"haskell absolute value exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 0);
 }
 
 // Execution timeout Haskell solution.
@@ -106,7 +106,7 @@ function executionTimeoutHaskell() {
 		"haskell absolute value exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 0);
 }
 
 // Gets a Python solution attempt from the Absolute Value exercise.
@@ -141,7 +141,7 @@ function correctPython() {
 		"python absolute value exercise correct status": (r) => r.status === 200,
 		"python absolute value exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 0);
 }
 
 // Wrong answer Python solution.
@@ -153,7 +153,7 @@ function wrongAnswerPython() {
 		"python absolute value exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 0);
 }
 
 // Runtime error Python solution.
@@ -165,7 +165,7 @@ function runtimeErrorPython() {
 		"python absolute value exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 0);
 }
 
 // Syntax error Python solution.
@@ -177,7 +177,7 @@ function syntaxErrorPython() {
 		"python absolute value exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 0);
 }
 
 // Execution timeout Python solution.
@@ -190,5 +190,5 @@ function executionTimeoutPython() {
 		"python absolute value exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 0);
 }

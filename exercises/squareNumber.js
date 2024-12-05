@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell square number exercise status": (r) => r.status === 200,
 		"haskell square number exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Wrong answer Haskell solution.
@@ -67,7 +67,7 @@ function wrongAnswerHaskell() {
 		"haskell square number exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Runtime error Haskell solution.
@@ -80,7 +80,7 @@ function runtimeErrorHaskell() {
 		"haskell square number exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Compilation error Haskell solution.
@@ -93,7 +93,7 @@ function compilationErrorHaskell() {
 		"haskell square number exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Execution timeout Haskell solution.
@@ -106,7 +106,7 @@ function executionTimeoutHaskell() {
 		"haskell square number exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Gets a Python solution attempt from the Double String exercise.
@@ -140,7 +140,7 @@ function correctPython() {
 		"python square number exercise correct status": (r) => r.status === 200,
 		"python square number exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 7);
 }
 
 // Wrong answer Python solution.
@@ -152,7 +152,7 @@ function wrongAnswerPython() {
 		"python square number exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 7);
 }
 
 // Runtime error Python solution.
@@ -164,7 +164,7 @@ function runtimeErrorPython() {
 		"python square number exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 7);
 }
 
 // Syntax error Python solution.
@@ -176,7 +176,7 @@ function syntaxErrorPython() {
 		"python square number exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 7);
 }
 
 // Execution timeout Python solution.
@@ -189,5 +189,5 @@ function executionTimeoutPython() {
 		"python square number exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 7);
 }

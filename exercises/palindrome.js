@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell palindrome exercise status": (r) => r.status === 200,
 		"haskell palindrome exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Wrong answer Haskell solution.
@@ -66,7 +66,7 @@ function wrongAnswerHaskell() {
 		"haskell palindrome exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Runtime error Haskell solution.
@@ -78,7 +78,7 @@ function runtimeErrorHaskell() {
 		"haskell palindrome exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Compilation error Haskell solution.
@@ -91,7 +91,7 @@ function compilationErrorHaskell() {
 		"haskell palindrome exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Execution timeout Haskell solution.
@@ -104,7 +104,7 @@ function executionTimeoutHaskell() {
 		"haskell palindrome exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 4);
 }
 
 // Gets a Python solution attempt from the Palindrome exercise.
@@ -138,7 +138,7 @@ function correctPython() {
 		"python palindrome exercise correct status": (r) => r.status === 200,
 		"python palindrome exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 4);
 }
 
 // Wrong answer Python solution.
@@ -149,7 +149,7 @@ function wrongAnswerPython() {
 		"python palindrome exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 4);
 }
 
 // Runtime error Python solution.
@@ -160,7 +160,7 @@ function runtimeErrorPython() {
 		"python palindrome exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 4);
 }
 
 // Syntax error Python solution.
@@ -171,7 +171,7 @@ function syntaxErrorPython() {
 		"python palindrome exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 4);
 }
 
 // Execution timeout Python solution.
@@ -184,5 +184,5 @@ function executionTimeoutPython() {
 		"python palindrome exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 4);
 }

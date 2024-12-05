@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell double string exercise status": (r) => r.status === 200,
 		"haskell double string exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Wrong answer Haskell solution.
@@ -67,7 +67,7 @@ function wrongAnswerHaskell() {
 		"haskell double string exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Runtime error Haskell solution.
@@ -80,7 +80,7 @@ function runtimeErrorHaskell() {
 		"haskell double string exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Compilation error Haskell solution.
@@ -93,7 +93,7 @@ function compilationErrorHaskell() {
 		"haskell double string exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Execution timeout Haskell solution.
@@ -106,7 +106,7 @@ function executionTimeoutHaskell() {
 		"haskell double string exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 2);
 }
 
 // Gets a Python solution attempt from the Double String exercise.
@@ -140,7 +140,7 @@ function correctPython() {
 		"python double string exercise correct status": (r) => r.status === 200,
 		"python double string exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 2);
 }
 
 // Wrong answer Python solution.
@@ -152,7 +152,7 @@ function wrongAnswerPython() {
 		"python double string exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 2);
 }
 
 // Runtime error Python solution.
@@ -164,7 +164,7 @@ function runtimeErrorPython() {
 		"python double string exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 2);
 }
 
 // Syntax error Python solution.
@@ -176,7 +176,7 @@ function syntaxErrorPython() {
 		"python double string exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check);
+	return newPythonSolution(solution, check, 2);
 }
 
 // Execution timeout Python solution.
@@ -189,5 +189,5 @@ function executionTimeoutPython() {
 		"python double string exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check);
+	return newHaskellSolution(solution, check, 2);
 }

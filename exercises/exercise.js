@@ -1,5 +1,13 @@
 import { absoluteValueExercise } from "./absoluteValue.js";
 import { stringLengthExercise } from "./stringLength.js";
+import { doubleStringExercise } from "./doubleString.js";
+import { squareNumberExercise } from "./squareNumber.js";
+import { palindromeExercise } from "./palindrome.js";
+import { vowelCountExercise } from "./vowelCount.js";
+import { reverseExercise } from "./reverse.js";
+import { areaExercise } from "./area.js";
+import { equalStringsExercise } from "./equalStrings.js";
+import { signDetectorExercise } from "./signDetector.js";
 
 export function newHaskellSolution(solution, check) {
 	return {
@@ -15,7 +23,7 @@ export function newPythonSolution(solution, check) {
 	return {
 		payload: {
 			solution,
-			languageId: 1,
+			languageId: 2,
 		},
 		check,
 	};
@@ -37,8 +45,24 @@ export function getExercise() {
 	switch (true) {
 		case inRange(number, 0, 0.09):
 			return absoluteValueExercise();
-		case inRange(number, 0.1, 0.14):
+		case inRange(number, 0.1, 0.19):
 			return stringLengthExercise();
+		case inRange(number, 0.2, 0.29):
+			return squareNumberExercise();
+		case inRange(number, 0.3, 0.39):
+			return doubleStringExercise();
+		case inRange(number, 0.4, 0.49):
+			return palindromeExercise();
+		case inRange(number, 0.5, 0.59):
+			return vowelCountExercise();
+		case inRange(number, 0.6, 0.69):
+			return reverseExercise();
+		case inRange(number, 0.7, 0.79):
+			return areaExercise();
+		case inRange(number, 0.8, 0.89):
+			return equalStringsExercise();
+		default:
+			return signDetectorExercise();
 	}
 }
 

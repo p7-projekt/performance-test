@@ -10,8 +10,8 @@ import {
 	checkSyntaxError,
 } from "./exercise.js";
 
-// Gets a Python or Haskell solution attempt for the String Length exercise.
-export function stringLengthExercise() {
+// Gets a Python or Haskell solution attempt for the Square Number exercise.
+export function squareNumberExercise() {
 	const number = Math.round(Math.random());
 
 	// 50/50 split between Python and Haskell solutions.
@@ -22,7 +22,7 @@ export function stringLengthExercise() {
 	}
 }
 
-// Gets a Haskell solution attempt from the String Length exercise.
+// Gets a Haskell solution attempt from the Square Number exercise.
 function haskellExercise() {
 	const number = Math.random();
 
@@ -49,10 +49,10 @@ function haskellExercise() {
 // Correct Haskell solution.
 function correctHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution [] = 0\nsolution s = 1 + solution (tail s)";
+		"module Solution where\n\nsolution :: Int -> Int\nsolution n = n * n";
 	const check = {
-		"haskell string length exercise status": (r) => r.status === 200,
-		"haskell string length exercise result": (r) => checkCorrect(r),
+		"haskell square number exercise status": (r) => r.status === 200,
+		"haskell square number exercise result": (r) => checkCorrect(r),
 	};
 	return newHaskellSolution(solution, check);
 }
@@ -60,11 +60,11 @@ function correctHaskell() {
 // Wrong answer Haskell solution.
 function wrongAnswerHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution [] = 0\nsolution s = 0 + solution (tail s)";
+		"module Solution where\n\nsolution :: Int -> Int\nsolution n = n + n";
 	const check = {
-		"haskell string length exercise wrong answer status": (r) =>
+		"haskell square number exercise wrong answer status": (r) =>
 			r.status === 400,
-		"haskell string length exercise wrong answer result": (r) =>
+		"haskell square number exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
 	return newHaskellSolution(solution, check);
@@ -73,11 +73,11 @@ function wrongAnswerHaskell() {
 // Runtime error Haskell solution.
 function runtimeErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution s = 1 + solution (head s)";
+		"module Solution where\n\nsolution :: Int -> Int\nsolution n = n `div` 0";
 	const check = {
-		"haskell string length exercise runtime error status": (r) =>
+		"haskell square number exercise runtime error status": (r) =>
 			r.status === 400,
-		"haskell string length exercise runtime error result": (r) =>
+		"haskell square number exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
 	return newHaskellSolution(solution, check);
@@ -86,11 +86,11 @@ function runtimeErrorHaskell() {
 // Compilation error Haskell solution.
 function compilationErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution s =";
+		"module Solution where\n\nsolution :: Int -> Int\nsolution n =";
 	const check = {
-		"haskell string length exercise compilation error status": (r) =>
+		"haskell square number exercise compilation error status": (r) =>
 			r.status === 400,
-		"haskell string length exercise compilation error result": (r) =>
+		"haskell square number exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
 	return newHaskellSolution(solution, check);
@@ -99,17 +99,17 @@ function compilationErrorHaskell() {
 // Execution timeout Haskell solution.
 function executionTimeoutHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: Int -> Int\nsolution s = solution s";
+		"module Solution where\n\nsolution :: Int -> Int\nsolution n = solution n";
 	const check = {
-		"haskell string length exercise execution timeout status": (r) =>
+		"haskell square number exercise execution timeout status": (r) =>
 			r.status === 400,
-		"haskell string length exercise execution timeout result": (r) =>
+		"haskell square number exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
 	return newHaskellSolution(solution, check);
 }
 
-// Gets a Python solution attempt from the String Length exercise.
+// Gets a Python solution attempt from the Double String exercise.
 function pythonExercise() {
 	const number = Math.random();
 
@@ -135,21 +135,21 @@ function pythonExercise() {
 
 // Correct Python solution.
 function correctPython() {
-	const solution = "def solution(s: str):\n    return len(s)";
+	const solution = "def solution(n: int):\n    return n * n";
 	const check = {
-		"python string length exercise correct status": (r) => r.status === 200,
-		"python string length exercise correct result": (r) => checkCorrect(r),
+		"python square number exercise correct status": (r) => r.status === 200,
+		"python square number exercise correct result": (r) => checkCorrect(r),
 	};
 	return newPythonSolution(solution, check);
 }
 
 // Wrong answer Python solution.
 function wrongAnswerPython() {
-	const solution = "def solution(s: str):\n    return 1 + len(s)";
+	const solution = "def solution(n: int):\n    return n + n";
 	const check = {
-		"python string length exercise wrong answer status": (r) =>
+		"python square number exercise wrong answer status": (r) =>
 			r.status === 400,
-		"python string length exercise wrong answer result": (r) =>
+		"python square number exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
 	return newPythonSolution(solution, check);
@@ -157,11 +157,11 @@ function wrongAnswerPython() {
 
 // Runtime error Python solution.
 function runtimeErrorPython() {
-	const solution = "def solution(s: str):\n    return len(s) / 0";
+	const solution = "def solution(n: int):\n    return n / 0";
 	const check = {
-		"python string length exercise runtime error status": (r) =>
+		"python square number exercise runtime error status": (r) =>
 			r.status === 400,
-		"python string length exercise runtime error result": (r) =>
+		"python square number exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
 	return newPythonSolution(solution, check);
@@ -169,11 +169,11 @@ function runtimeErrorPython() {
 
 // Syntax error Python solution.
 function syntaxErrorPython() {
-	const solution = "def solution(s: str)\n    return len(s) / 0";
+	const solution = "def solution(n: int)\n    return n";
 	const check = {
-		"python string length exercise syntax error status": (r) =>
+		"python square number exercise syntax error status": (r) =>
 			r.status === 400,
-		"python string length exercise syntax error result": (r) =>
+		"python square number exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
 	return newPythonSolution(solution, check);
@@ -182,11 +182,11 @@ function syntaxErrorPython() {
 // Execution timeout Python solution.
 function executionTimeoutPython() {
 	const solution =
-		"def solution(s: str):\n    while True:\n        n = 1\n    return s";
+		"def solution(n: int):\n    while True:\n        n = n + n\n    return n";
 	const check = {
-		"python string length exercise execution timeout status": (r) =>
+		"python square number exercise execution timeout status": (r) =>
 			r.status === 400,
-		"python string length exercise execution timeout result": (r) =>
+		"python square number exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
 	return newHaskellSolution(solution, check);

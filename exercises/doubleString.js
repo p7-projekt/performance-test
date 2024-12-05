@@ -10,8 +10,8 @@ import {
 	checkSyntaxError,
 } from "./exercise.js";
 
-// Gets a Python or Haskell solution attempt for the String Length exercise.
-export function stringLengthExercise() {
+// Gets a Python or Haskell solution attempt for the Double String exercise.
+export function doubleStringExercise() {
 	const number = Math.round(Math.random());
 
 	// 50/50 split between Python and Haskell solutions.
@@ -22,7 +22,7 @@ export function stringLengthExercise() {
 	}
 }
 
-// Gets a Haskell solution attempt from the String Length exercise.
+// Gets a Haskell solution attempt from the Double String exercise.
 function haskellExercise() {
 	const number = Math.random();
 
@@ -49,10 +49,10 @@ function haskellExercise() {
 // Correct Haskell solution.
 function correctHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution [] = 0\nsolution s = 1 + solution (tail s)";
+		"module Solution where\n\nsolution :: String -> String\nsolution s = s ++ s";
 	const check = {
-		"haskell string length exercise status": (r) => r.status === 200,
-		"haskell string length exercise result": (r) => checkCorrect(r),
+		"haskell double string exercise status": (r) => r.status === 200,
+		"haskell double string exercise result": (r) => checkCorrect(r),
 	};
 	return newHaskellSolution(solution, check);
 }
@@ -60,11 +60,11 @@ function correctHaskell() {
 // Wrong answer Haskell solution.
 function wrongAnswerHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution [] = 0\nsolution s = 0 + solution (tail s)";
+		"module Solution where\n\nsolution :: String -> String\nsolution s = s";
 	const check = {
-		"haskell string length exercise wrong answer status": (r) =>
+		"haskell double string exercise wrong answer status": (r) =>
 			r.status === 400,
-		"haskell string length exercise wrong answer result": (r) =>
+		"haskell double string exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
 	return newHaskellSolution(solution, check);
@@ -73,11 +73,11 @@ function wrongAnswerHaskell() {
 // Runtime error Haskell solution.
 function runtimeErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution s = 1 + solution (head s)";
+		"module Solution where\n\nsolution :: String -> String\nsolution s = head []";
 	const check = {
-		"haskell string length exercise runtime error status": (r) =>
+		"haskell double string exercise runtime error status": (r) =>
 			r.status === 400,
-		"haskell string length exercise runtime error result": (r) =>
+		"haskell double string exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
 	return newHaskellSolution(solution, check);
@@ -86,11 +86,11 @@ function runtimeErrorHaskell() {
 // Compilation error Haskell solution.
 function compilationErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution s =";
+		"module Solution where\n\nsolution :: String -> String\nsolution s =";
 	const check = {
-		"haskell string length exercise compilation error status": (r) =>
+		"haskell double string exercise compilation error status": (r) =>
 			r.status === 400,
-		"haskell string length exercise compilation error result": (r) =>
+		"haskell double string exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
 	return newHaskellSolution(solution, check);
@@ -99,17 +99,17 @@ function compilationErrorHaskell() {
 // Execution timeout Haskell solution.
 function executionTimeoutHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: Int -> Int\nsolution s = solution s";
+		"module Solution where\n\nsolution :: String -> String\nsolution s = solution s";
 	const check = {
-		"haskell string length exercise execution timeout status": (r) =>
+		"haskell double string exercise execution timeout status": (r) =>
 			r.status === 400,
-		"haskell string length exercise execution timeout result": (r) =>
+		"haskell double string exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
 	return newHaskellSolution(solution, check);
 }
 
-// Gets a Python solution attempt from the String Length exercise.
+// Gets a Python solution attempt from the Double String exercise.
 function pythonExercise() {
 	const number = Math.random();
 
@@ -135,21 +135,21 @@ function pythonExercise() {
 
 // Correct Python solution.
 function correctPython() {
-	const solution = "def solution(s: str):\n    return len(s)";
+	const solution = "def solution(s: str):\n    return s + s";
 	const check = {
-		"python string length exercise correct status": (r) => r.status === 200,
-		"python string length exercise correct result": (r) => checkCorrect(r),
+		"python double string exercise correct status": (r) => r.status === 200,
+		"python double string exercise correct result": (r) => checkCorrect(r),
 	};
 	return newPythonSolution(solution, check);
 }
 
 // Wrong answer Python solution.
 function wrongAnswerPython() {
-	const solution = "def solution(s: str):\n    return 1 + len(s)";
+	const solution = "def solution(s: str):\n    return s";
 	const check = {
-		"python string length exercise wrong answer status": (r) =>
+		"python double string exercise wrong answer status": (r) =>
 			r.status === 400,
-		"python string length exercise wrong answer result": (r) =>
+		"python double string exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
 	return newPythonSolution(solution, check);
@@ -159,9 +159,9 @@ function wrongAnswerPython() {
 function runtimeErrorPython() {
 	const solution = "def solution(s: str):\n    return len(s) / 0";
 	const check = {
-		"python string length exercise runtime error status": (r) =>
+		"python double string exercise runtime error status": (r) =>
 			r.status === 400,
-		"python string length exercise runtime error result": (r) =>
+		"python double string exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
 	return newPythonSolution(solution, check);
@@ -171,9 +171,9 @@ function runtimeErrorPython() {
 function syntaxErrorPython() {
 	const solution = "def solution(s: str)\n    return len(s) / 0";
 	const check = {
-		"python string length exercise syntax error status": (r) =>
+		"python double string exercise syntax error status": (r) =>
 			r.status === 400,
-		"python string length exercise syntax error result": (r) =>
+		"python double string exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
 	return newPythonSolution(solution, check);
@@ -184,9 +184,9 @@ function executionTimeoutPython() {
 	const solution =
 		"def solution(s: str):\n    while True:\n        n = 1\n    return s";
 	const check = {
-		"python string length exercise execution timeout status": (r) =>
+		"python double string exercise execution timeout status": (r) =>
 			r.status === 400,
-		"python string length exercise execution timeout result": (r) =>
+		"python double string exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
 	return newHaskellSolution(solution, check);

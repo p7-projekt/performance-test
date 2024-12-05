@@ -10,8 +10,8 @@ import {
 	checkSyntaxError,
 } from "./exercise.js";
 
-// Gets a Python or Haskell solution attempt for the String Length exercise.
-export function stringLengthExercise() {
+// Gets a Python or Haskell solution attempt for the Vowel Count exercise.
+export function vowelCountExercise() {
 	const number = Math.round(Math.random());
 
 	// 50/50 split between Python and Haskell solutions.
@@ -22,7 +22,7 @@ export function stringLengthExercise() {
 	}
 }
 
-// Gets a Haskell solution attempt from the String Length exercise.
+// Gets a Haskell solution attempt from the Vowel Count exercise.
 function haskellExercise() {
 	const number = Math.random();
 
@@ -49,10 +49,10 @@ function haskellExercise() {
 // Correct Haskell solution.
 function correctHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution [] = 0\nsolution s = 1 + solution (tail s)";
+		'module Solution where\n\nsolution :: String -> Int\nsolution s = length (filter (`elem` "aeiouAEIOU") s)';
 	const check = {
-		"haskell string length exercise status": (r) => r.status === 200,
-		"haskell string length exercise result": (r) => checkCorrect(r),
+		"haskell vowel count exercise status": (r) => r.status === 200,
+		"haskell vowel count exercise result": (r) => checkCorrect(r),
 	};
 	return newHaskellSolution(solution, check);
 }
@@ -60,11 +60,10 @@ function correctHaskell() {
 // Wrong answer Haskell solution.
 function wrongAnswerHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution [] = 0\nsolution s = 0 + solution (tail s)";
+		"module Solution where\n\nsolution :: String -> Int\nsolution s = 0";
 	const check = {
-		"haskell string length exercise wrong answer status": (r) =>
-			r.status === 400,
-		"haskell string length exercise wrong answer result": (r) =>
+		"haskell vowel count exercise wrong answer status": (r) => r.status === 400,
+		"haskell vowel count exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
 	return newHaskellSolution(solution, check);
@@ -75,9 +74,9 @@ function runtimeErrorHaskell() {
 	const solution =
 		"module Solution where\n\nsolution :: String -> Int\nsolution s = 1 + solution (head s)";
 	const check = {
-		"haskell string length exercise runtime error status": (r) =>
+		"haskell vowel count exercise runtime error status": (r) =>
 			r.status === 400,
-		"haskell string length exercise runtime error result": (r) =>
+		"haskell vowel count exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
 	return newHaskellSolution(solution, check);
@@ -88,9 +87,9 @@ function compilationErrorHaskell() {
 	const solution =
 		"module Solution where\n\nsolution :: String -> Int\nsolution s =";
 	const check = {
-		"haskell string length exercise compilation error status": (r) =>
+		"haskell vowel count exercise compilation error status": (r) =>
 			r.status === 400,
-		"haskell string length exercise compilation error result": (r) =>
+		"haskell vowel count exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
 	return newHaskellSolution(solution, check);
@@ -101,15 +100,15 @@ function executionTimeoutHaskell() {
 	const solution =
 		"module Solution where\n\nsolution :: Int -> Int\nsolution s = solution s";
 	const check = {
-		"haskell string length exercise execution timeout status": (r) =>
+		"haskell vowel count exercise execution timeout status": (r) =>
 			r.status === 400,
-		"haskell string length exercise execution timeout result": (r) =>
+		"haskell vowel count exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
 	return newHaskellSolution(solution, check);
 }
 
-// Gets a Python solution attempt from the String Length exercise.
+// Gets a Python solution attempt from the Vowel Count exercise.
 function pythonExercise() {
 	const number = Math.random();
 
@@ -135,10 +134,11 @@ function pythonExercise() {
 
 // Correct Python solution.
 function correctPython() {
-	const solution = "def solution(s: str):\n    return len(s)";
+	const solution =
+		"def solution(s: str):\n    return sum(c in 'aeiouAEIOU' for c in s)";
 	const check = {
-		"python string length exercise correct status": (r) => r.status === 200,
-		"python string length exercise correct result": (r) => checkCorrect(r),
+		"python vowel count exercise correct status": (r) => r.status === 200,
+		"python vowel count exercise correct result": (r) => checkCorrect(r),
 	};
 	return newPythonSolution(solution, check);
 }
@@ -147,9 +147,8 @@ function correctPython() {
 function wrongAnswerPython() {
 	const solution = "def solution(s: str):\n    return 1 + len(s)";
 	const check = {
-		"python string length exercise wrong answer status": (r) =>
-			r.status === 400,
-		"python string length exercise wrong answer result": (r) =>
+		"python vowel count exercise wrong answer status": (r) => r.status === 400,
+		"python vowel count exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
 	return newPythonSolution(solution, check);
@@ -159,9 +158,8 @@ function wrongAnswerPython() {
 function runtimeErrorPython() {
 	const solution = "def solution(s: str):\n    return len(s) / 0";
 	const check = {
-		"python string length exercise runtime error status": (r) =>
-			r.status === 400,
-		"python string length exercise runtime error result": (r) =>
+		"python vowel count exercise runtime error status": (r) => r.status === 400,
+		"python vowel count exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
 	return newPythonSolution(solution, check);
@@ -171,9 +169,8 @@ function runtimeErrorPython() {
 function syntaxErrorPython() {
 	const solution = "def solution(s: str)\n    return len(s) / 0";
 	const check = {
-		"python string length exercise syntax error status": (r) =>
-			r.status === 400,
-		"python string length exercise syntax error result": (r) =>
+		"python vowel count exercise syntax error status": (r) => r.status === 400,
+		"python vowel count exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
 	return newPythonSolution(solution, check);
@@ -184,9 +181,9 @@ function executionTimeoutPython() {
 	const solution =
 		"def solution(s: str):\n    while True:\n        n = 1\n    return s";
 	const check = {
-		"python string length exercise execution timeout status": (r) =>
+		"python vowel count exercise execution timeout status": (r) =>
 			r.status === 400,
-		"python string length exercise execution timeout result": (r) =>
+		"python vowel count exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
 	return newHaskellSolution(solution, check);

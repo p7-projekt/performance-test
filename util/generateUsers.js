@@ -1,75 +1,75 @@
-import http from 'k6/http';
-import { check } from 'k6';
-import { generateRandomEmail, generateRandomPassword } from './randomGenerators.js';
+import http from "k6/http";
+import { check } from "k6";
+import { generateRandomEmail, generatePassword } from "./randomGenerators.js";
 
 export async function login(email, password) {
-    const url = 'http://localhost:80/login';
-  
-    const options = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-  
-    const payload = JSON.stringify({ email, password });
+	const url = "http://localhost:80/login";
 
-    const response = http.post(url, payload, options);
+	const options = {
+		headers: {
+			"Content-Type": "application/json",
+		},
+	};
 
-    // Check if the login was successful
-    check(response, {
-      'login successful': (r) => r.status === 200,
-    });
+	const payload = JSON.stringify({ email, password });
 
-    if (response.status === 200) {
-      const data = JSON.parse(response.body);
-      return data.token; // Return the token
-    } else {
-      console.error('Login failed:', response.status, response.body);
-      return null;
-    }
+	const response = http.post(url, payload, options);
+
+	// Check if the login was successful
+	check(response, {
+		"login successful": (r) => r.status === 200,
+	});
+
+	if (response.status === 200) {
+		const data = JSON.parse(response.body);
+		return data.token; // Return the token
+	} else {
+		console.error("Login failed:", response.status, response.body);
+		return null;
+	}
 }
 
 export async function createRandomUsers(numberOfUsers) {
-    const results = [];
-    let count = 50;
-    for (let i = 1; i <= numberOfUsers; i++) {
-        results.push(createRandomUser(i));
-        if (i > count) {
-          console.log("Created users:", count);
-          count += 50;
-        }
-    }
-    return results;
+	const results = [];
+	let count = 50;
+	for (let i = 1; i <= numberOfUsers; i++) {
+		results.push(createRandomUser(i));
+		if (i > count) {
+			console.log("Created users:", count);
+			count += 50;
+		}
+	}
+	return results;
 }
 
 export async function createRandomUser(number) {
-    const url = 'http://localhost:80/register'; // Update to correct k9s service
-    const email = generateRandomEmail(number);
-    const password = generateRandomPassword();
-    const confirmPassword = password;
-  
-    const payload = JSON.stringify({
-      email,
-      password,
-      confirmPassword,
-      name: `User ${Math.random().toString(36).substring(2, 8)}`,
-    });
+	const url = "http://localhost:80/register"; // Update to correct k9s service
+	const email = generateRandomEmail(number);
+	const password = generatePassword();
+	const confirmPassword = password;
 
-    const options = {
-      headers: { 'Content-Type': 'application/json' },
-    };
+	const payload = JSON.stringify({
+		email,
+		password,
+		confirmPassword,
+		name: `User ${Math.random().toString(36).substring(2, 8)}`,
+	});
 
-    const response = http.post(url, payload, options);
+	const options = {
+		headers: { "Content-Type": "application/json" },
+	};
 
-    // Check if registration was successful
-    check(response, {
-      'registration successful': (r) => r.status === 200,
-    });
+	const response = http.post(url, payload, options);
 
-    if (response.status === 200) {
-      return login(email, password);
-    } else {
-      console.error("Registration failed:", response.status, response.body);
-      return null;
-    }
+	// Check if registration was successful
+	check(response, {
+		"registration successful": (r) => r.status === 200,
+	});
+
+	if (response.status === 200) {
+		return login(email, password);
+	} else {
+		console.error("Registration failed:", response.status, response.body);
+		return null;
+	}
 }

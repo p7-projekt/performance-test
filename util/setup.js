@@ -4,10 +4,7 @@ const { createSessionsForAllClassrooms, createExercises } = require('./generateS
 const { distributeStudentsToSessions } = require('./distributeStudents');
 const { getExercises } = require('./generateExercise')
 
-
-module.exports = { generateSetup };
-
-async function generateSetup(numberOfUsers, numberOfClassrooms){
+export async function generateSetup(numberOfUsers, numberOfClassrooms){
     token = await login("admin@p7.dk", "Admin!1234");
     let userIds = []
     userIds = await createRandomUsers(numberOfUsers);

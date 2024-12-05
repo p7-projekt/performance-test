@@ -1,98 +1,96 @@
-const fetch = require('node-fetch');
-const { generateRandomString } = require('./randomGenerators.js');
+import http from 'k6/http';
+import { check } from 'k6';
+import { generateRandomString } from './randomGenerators.js';
 
-
-module.exports = { generateRandomClassrooms };
-
-async function generateRandomClassrooms(numberOfClassrooms, token){
+export async function generateRandomClassrooms(numberOfClassrooms, token) {
   for (let i = 1; i <= numberOfClassrooms; i++) {
-    await createRandomClassroom(i, token);
-    await activateClassroom(i, token);
+    createRandomClassroom(i, token);
+    activateClassroom(i, token);
   }
-  return await fetchClassroomIds(token);
+  return fetchClassroomIds(token);
 }
 
-async function createRandomClassroom(classNumber, token) {
-    const url = 'http://localhost:5015/v2/classrooms';
-    const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
-    const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
-  
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`, // Add Bearer token for authorization
-      },
-      body: JSON.stringify({
-        title,
-        description,
-      }),
-    };
-    try {
-      const response = await fetch(url, options);
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-    } catch (error) {
-      console.error('Error during classroom creation:', error);
-      throw error;
-    }
+export async function createRandomClassroom(classNumber, token) {
+  const url = 'http://localhost:5015/v2/classrooms';
+  const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
+  const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
+
+  const payload = JSON.stringify({
+    title,
+    description,
+  });
+
+  const options = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+  };
+
+  const response = http.post(url, payload, options);
+
+  // Check if the classroom was created successfully
+  check(response, {
+    'classroom created successfully': (r) => r.status === 200,
+  });
+
+  if (response.status !== 200) {
+    console.error('Error during classroom creation:', response.status, response.body);
+  }
 }
 
-async function fetchClassroomIds(token) {
+export async function fetchClassroomIds(token) {
   const url = 'http://localhost:5015/v2/classrooms';
 
   const options = {
-    method: 'GET',
     headers: {
-      'Authorization': `Bearer ${token}`, // Add Bearer token for authorization
+      'Authorization': `Bearer ${token}`,
     },
   };
 
-  try {
-    const response = await fetch(url, options);
+  const response = http.get(url, options);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+  // Check if the classroom IDs were fetched successfully
+  check(response, {
+    'classroom IDs fetched successfully': (r) => r.status === 200,
+  });
 
-    const classrooms = await response.json();
+  if (response.status === 200) {
+    const classrooms = JSON.parse(response.body);
     const ids = classrooms.map((classroom) => classroom.id);
     return ids;
-  } catch (error) {
-    console.error('Error fetching classroom IDs:', error);
+  } else {
+    console.error('Error fetching classroom IDs:', response.status, response.body);
   }
 }
 
-async function activateClassroom(classNumber, token) {
+export async function activateClassroom(classNumber, token) {
   const url = `http://localhost:5015/v2/classrooms/${classNumber}`;
   const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
   const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
-  const registrationOpen = true
+  const registrationOpen = true;
+
+  const payload = JSON.stringify({
+    title,
+    description,
+    registrationOpen,
+  });
 
   const options = {
-    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`, // Add Bearer token for authorization
+      'Authorization': `Bearer ${token}`,
     },
-    body: JSON.stringify({
-      title,
-      description,
-      registrationOpen,
-    }),
   };
-  try {
-    const response = await fetch(url, options);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+  const response = http.put(url, payload, options);
 
-  } catch (error) {
-    console.error('Error during classroom opening:', error);
-    throw error;
+  // Check if the classroom was activated successfully
+  check(response, {
+    'classroom activated successfully': (r) => r.status === 200,
+  });
+
+  if (response.status !== 200) {
+    console.error('Error during classroom activation:', response.status, response.body);
   }
 }

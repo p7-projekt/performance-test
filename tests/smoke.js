@@ -31,6 +31,6 @@ export default function (data) {
 
 	const res = http.post(url, JSON.stringify(exercise.payload), params);
 	console.log("body: " + res.body);
-	check(res, solution.check);
+	check(res, exercise.check);
 	sleep(30);
 }

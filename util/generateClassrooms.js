@@ -100,7 +100,7 @@ export async function activateClassroom(classNumber, token) {
 
 	if (response.status !== 204) {
 		throw new Error(
-			"Error during classroom activation:",
+			`Error during classroom activation: ${response.status}`,
 			response.status,
 			response.body,
 		);

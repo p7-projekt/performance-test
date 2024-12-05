@@ -29,8 +29,9 @@ export default function (data) {
 	};
 	delete exercise.payload.exerciseId;
 	exercise.payload.sessionId = user.sessionId;
-	console.log(exercise.payload);
+	console.log("dddddd", exercise.payload);
 	const res = http.post(url, JSON.stringify(exercise.payload), params);
+	console.log("status:", res.status);
 	console.log("body: " + res.body);
 	check(res, exercise.check);
 	sleep(30);

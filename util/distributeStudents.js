@@ -1,5 +1,7 @@
 const fetch = require('node-fetch');
 
+module.exports = { distributeStudentsToSessions };
+
 async function fetchClassroomDetails(token, classroomId) {
     const url = `http://localhost:5015/v2/classrooms/${classroomId}`;
   

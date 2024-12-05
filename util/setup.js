@@ -2,6 +2,7 @@ const { login, createRandomUsers } = require('./generateUsers');
 const { generateRandomClassrooms } = require('./generateClassrooms');
 const { createSessionsForAllClassrooms, createExercises } = require('./generateSessions');
 const { distributeStudentsToSessions } = require('./distributeStudents');
+const { getExercises } = require('./generateExercise')
 
 
 module.exports = { generateSetup };
@@ -11,8 +12,9 @@ async function generateSetup(numberOfUsers, numberOfClassrooms){
     let userIds = []
     userIds = await createRandomUsers(numberOfUsers);
     console.log("User ids collected");
-    //Insert exercises 
-    //await createExercises(exercises, token);
+    //Insert exercises
+    const exercises = getExercises();
+    await createExercises(exercises, token);
     //Generate classrooms
     const classRoomIds = await generateRandomClassrooms(numberOfClassrooms, token)
     console.log("ClassRooms created")

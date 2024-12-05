@@ -8,7 +8,7 @@ export async function distributeStudentsToSessions(studentTokens, classroomIds, 
   for (const classroomId of classroomIds) {
     try {
       const token = adminToken;
-      const data = fetchClassroomDetails(token, classroomId);
+      const data = await fetchClassroomDetails(token, classroomId);
       classroomData.push({
         classroomId,
         roomCode: data.roomcode,

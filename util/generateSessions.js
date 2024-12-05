@@ -24,10 +24,10 @@ export async function createSession(token, classroomId, sessionNumber) {
 
 	// Use k6's check to validate the response
 	check(response, {
-		"session creation successful": (r) => r.status === 200,
+		"session creation successful": (r) => r.status === 201,
 	});
 
-	if (response.status !== 200) {
+	if (response.status !== 201) {
 		console.error(
 			`Error creating session for classroom ${classroomId}: ${response.status} - ${response.body}`,
 		);

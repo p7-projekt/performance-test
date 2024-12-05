@@ -24,8 +24,7 @@ export async function login(email, password) {
 		const data = JSON.parse(response.body);
 		return data.token; // Return the token
 	} else {
-		throw new Error("Login failed:", response.status, response.body);
-		return null;
+		throw new Error(`Login failed:${response.status} - ${response.body}`);
 	}
 }
 
@@ -69,6 +68,6 @@ export async function createRandomUser(number) {
 	if (response.status === 200) {
 		return login(email, password);
 	} else {
-		throw new Error("Registration failed:", response.status, response.body);
+		throw new Error(`Registration failed:${response.status} - ${response.body}`);
 	}
 }

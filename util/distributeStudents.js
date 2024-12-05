@@ -107,6 +107,6 @@ export async function joinClassroom(token, roomCode) {
   });
 
   if (response.status !== 200) {
-    throw new Error(`Failed to join classroom with room code ${roomCode}:`, response.status, response.body);
+    throw new Error(`Failed to join classroom with room code ${roomCode}: ${response.status}`);
   }
 }

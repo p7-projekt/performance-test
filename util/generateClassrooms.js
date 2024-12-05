@@ -36,9 +36,7 @@ export async function createRandomClassroom(classNumber, token) {
 
 	if (response.status !== 201) {
 		throw new Error(
-			"Error during classroom creation:",
-			response.status,
-			response.body,
+			`Error during classroom creation:${response.status}, ${response.body}`
 		);
 	}
 }
@@ -65,9 +63,7 @@ export async function fetchClassroomIds(token) {
 		return ids;
 	} else {
 		throw new Error(
-			"Error fetching classroom IDs:",
-			response.status,
-			response.body,
+			`Error fetching classroom IDs:${response.status}, ${response.body}`
 		);
 	}
 }
@@ -100,9 +96,6 @@ export async function activateClassroom(classNumber, token) {
 
 	if (response.status !== 204) {
 		throw new Error(
-			`Error during classroom activation: ${response.status}`,
-			response.status,
-			response.body,
-		);
+			`Error during classroom activation: ${response.status}`);
 	}
 }

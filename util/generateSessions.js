@@ -64,7 +64,7 @@ export async function createExercises(exercises, token) {
 		});
 
 		if (response.status !== 201) {
-			throw new Error("Error creating exercise:", response.status, response.body);
+			throw new Error(`Error creating exercise:${response.status} - ${response.body}`);
 		}
 	}
 }

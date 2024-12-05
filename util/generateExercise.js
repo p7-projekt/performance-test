@@ -121,7 +121,7 @@ function equalStrings() {
 			},
 			{
 				inputParams: ["a", "a"],
-				outputParams: ["false"],
+				outputParams: ["true"],
 				publicVisible: true,
 			},
 			{

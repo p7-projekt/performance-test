@@ -28,7 +28,7 @@ export async function createSession(token, classroomId, sessionNumber) {
 	});
 
 	if (response.status !== 201) {
-		console.error(
+		throw new Error(
 			`Error creating session for classroom ${classroomId}: ${response.status} - ${response.body}`,
 		);
 	}
@@ -64,7 +64,7 @@ export async function createExercises(exercises, token) {
 		});
 
 		if (response.status !== 201) {
-			console.error("Error creating exercise:", response.status, response.body);
+			throw new Error("Error creating exercise:", response.status, response.body);
 		}
 	}
 }

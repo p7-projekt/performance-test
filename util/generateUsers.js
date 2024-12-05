@@ -24,7 +24,7 @@ export async function login(email, password) {
 		const data = JSON.parse(response.body);
 		return data.token; // Return the token
 	} else {
-		console.error("Login failed:", response.status, response.body);
+		throw new Error("Login failed:", response.status, response.body);
 		return null;
 	}
 }
@@ -33,7 +33,7 @@ export async function createRandomUsers(numberOfUsers) {
 	const results = [];
 	let count = 50;
 	for (let i = 1; i <= numberOfUsers; i++) {
-		results.push(createRandomUser(i));
+		results.push(await createRandomUser(i));
 		if (i > count) {
 			console.log("Created users:", count);
 			count += 50;
@@ -69,7 +69,6 @@ export async function createRandomUser(number) {
 	if (response.status === 200) {
 		return login(email, password);
 	} else {
-		console.error("Registration failed:", response.status, response.body);
-		return null;
+		throw new Error("Registration failed:", response.status, response.body);
 	}
 }

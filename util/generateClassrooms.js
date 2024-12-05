@@ -4,10 +4,10 @@ import { generateRandomString } from "./randomGenerators.js";
 
 export async function generateRandomClassrooms(numberOfClassrooms, token) {
 	for (let i = 1; i <= numberOfClassrooms; i++) {
-		createRandomClassroom(i, token);
-		activateClassroom(i, token);
+		await createRandomClassroom(i, token);
+		await activateClassroom(i, token);
 	}
-	return fetchClassroomIds(token);
+	return await fetchClassroomIds(token);
 }
 
 export async function createRandomClassroom(classNumber, token) {
@@ -35,7 +35,7 @@ export async function createRandomClassroom(classNumber, token) {
 	});
 
 	if (response.status !== 201) {
-		console.error(
+		throw new Error(
 			"Error during classroom creation:",
 			response.status,
 			response.body,
@@ -64,7 +64,7 @@ export async function fetchClassroomIds(token) {
 		const ids = classrooms.map((classroom) => classroom.id);
 		return ids;
 	} else {
-		console.error(
+		throw new Error(
 			"Error fetching classroom IDs:",
 			response.status,
 			response.body,
@@ -99,7 +99,7 @@ export async function activateClassroom(classNumber, token) {
 	});
 
 	if (response.status !== 200) {
-		console.error(
+		throw new Error(
 			"Error during classroom activation:",
 			response.status,
 			response.body,

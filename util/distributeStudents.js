@@ -15,7 +15,7 @@ export async function distributeStudentsToSessions(studentTokens, classroomIds, 
         sessions: data.sessions.map(session => session.id),
       });
     } catch (error) {
-      console.error(`Failed to fetch details for classroom ${classroomId}`);
+      throw new Error(`Failed to fetch details for classroom ${classroomId}`);
     }
   }
 
@@ -33,8 +33,7 @@ export async function distributeStudentsToSessions(studentTokens, classroomIds, 
     const { classroomId, roomCode, sessions } = classroomData[i] || {};
 
     if (!roomCode || !sessions || sessions.length === 0) {
-      console.error(`No valid room code or sessions for classroom ${classroomId}`);
-      continue;
+      throw new Error(`No valid room code or sessions for classroom ${classroomId}`);
     }
 
     const studentsInGroup = studentGroups[i];
@@ -108,6 +107,6 @@ export async function joinClassroom(token, roomCode) {
   });
 
   if (response.status !== 200) {
-    console.error(`Failed to join classroom with room code ${roomCode}:`, response.status, response.body);
+    throw new Error(`Failed to join classroom with room code ${roomCode}:`, response.status, response.body);
   }
 }

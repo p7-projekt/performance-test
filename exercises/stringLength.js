@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell string length exercise status": (r) => r.status === 200,
 		"haskell string length exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check, 8);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Wrong answer Haskell solution.
@@ -67,7 +67,7 @@ function wrongAnswerHaskell() {
 		"haskell string length exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check, 8);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Runtime error Haskell solution.
@@ -80,7 +80,7 @@ function runtimeErrorHaskell() {
 		"haskell string length exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check, 8);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Compilation error Haskell solution.
@@ -93,7 +93,7 @@ function compilationErrorHaskell() {
 		"haskell string length exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check, 8);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Execution timeout Haskell solution.
@@ -106,7 +106,7 @@ function executionTimeoutHaskell() {
 		"haskell string length exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 8);
+	return newHaskellSolution(solution, check, 9);
 }
 
 // Gets a Python solution attempt from the String Length exercise.
@@ -140,7 +140,7 @@ function correctPython() {
 		"python string length exercise correct status": (r) => r.status === 200,
 		"python string length exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check, 8);
+	return newPythonSolution(solution, check, 9);
 }
 
 // Wrong answer Python solution.
@@ -152,7 +152,7 @@ function wrongAnswerPython() {
 		"python string length exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check, 8);
+	return newPythonSolution(solution, check, 9);
 }
 
 // Runtime error Python solution.
@@ -164,7 +164,7 @@ function runtimeErrorPython() {
 		"python string length exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check, 8);
+	return newPythonSolution(solution, check, 9);
 }
 
 // Syntax error Python solution.
@@ -176,7 +176,7 @@ function syntaxErrorPython() {
 		"python string length exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check, 8);
+	return newPythonSolution(solution, check, 9);
 }
 
 // Execution timeout Python solution.
@@ -189,5 +189,5 @@ function executionTimeoutPython() {
 		"python string length exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 8);
+	return newHaskellSolution(solution, check, 9);
 }

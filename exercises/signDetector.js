@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell sign detector exercise status": (r) => r.status === 200,
 		"haskell sign detector exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check, 6);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Wrong answer Haskell solution.
@@ -67,7 +67,7 @@ function wrongAnswerHaskell() {
 		"haskell sign detector exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check, 6);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Runtime error Haskell solution.
@@ -80,7 +80,7 @@ function runtimeErrorHaskell() {
 		"haskell sign detector exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check, 6);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Compilation error Haskell solution.
@@ -93,7 +93,7 @@ function compilationErrorHaskell() {
 		"haskell sign detector exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check, 6);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Execution timeout Haskell solution.
@@ -106,7 +106,7 @@ function executionTimeoutHaskell() {
 		"haskell sign detector exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 6);
+	return newHaskellSolution(solution, check, 7);
 }
 
 // Gets a Python solution attempt from the Sign Detector exercise.
@@ -141,7 +141,7 @@ function correctPython() {
 		"python sign detector exercise correct status": (r) => r.status === 200,
 		"python sign detector exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check, 6);
+	return newPythonSolution(solution, check, 7);
 }
 
 // Wrong answer Python solution.
@@ -153,7 +153,7 @@ function wrongAnswerPython() {
 		"python sign detector exercise wrong answer result": (r) =>
 			checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check, 6);
+	return newPythonSolution(solution, check, 7);
 }
 
 // Runtime error Python solution.
@@ -165,7 +165,7 @@ function runtimeErrorPython() {
 		"python sign detector exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check, 6);
+	return newPythonSolution(solution, check, 7);
 }
 
 // Syntax error Python solution.
@@ -177,7 +177,7 @@ function syntaxErrorPython() {
 		"python sign detector exercise syntax error result": (r) =>
 			checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check, 6);
+	return newPythonSolution(solution, check, 7);
 }
 
 // Execution timeout Python solution.
@@ -190,5 +190,5 @@ function executionTimeoutPython() {
 		"python sign detector exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 6);
+	return newHaskellSolution(solution, check, 7);
 }

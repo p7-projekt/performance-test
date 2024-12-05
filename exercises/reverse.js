@@ -54,7 +54,7 @@ function correctHaskell() {
 		"haskell reverse exercise status": (r) => r.status === 200,
 		"haskell reverse exercise result": (r) => checkCorrect(r),
 	};
-	return newHaskellSolution(solution, check, 5);
+	return newHaskellSolution(solution, check, 6);
 }
 
 // Wrong answer Haskell solution.
@@ -65,7 +65,7 @@ function wrongAnswerHaskell() {
 		"haskell reverse exercise wrong answer status": (r) => r.status === 400,
 		"haskell reverse exercise wrong answer result": (r) => checkWrongAnswer(r),
 	};
-	return newHaskellSolution(solution, check, 5);
+	return newHaskellSolution(solution, check, 6);
 }
 
 // Runtime error Haskell solution.
@@ -77,7 +77,7 @@ function runtimeErrorHaskell() {
 		"haskell reverse exercise runtime error result": (r) =>
 			checkRuntimeError(r),
 	};
-	return newHaskellSolution(solution, check, 5);
+	return newHaskellSolution(solution, check, 6);
 }
 
 // Compilation error Haskell solution.
@@ -90,7 +90,7 @@ function compilationErrorHaskell() {
 		"haskell reverse exercise compilation error result": (r) =>
 			checkCompileError(r),
 	};
-	return newHaskellSolution(solution, check, 5);
+	return newHaskellSolution(solution, check, 6);
 }
 
 // Execution timeout Haskell solution.
@@ -103,7 +103,7 @@ function executionTimeoutHaskell() {
 		"haskell reverse exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 5);
+	return newHaskellSolution(solution, check, 6);
 }
 
 // Gets a Python solution attempt from the Reverse exercise.
@@ -137,7 +137,7 @@ function correctPython() {
 		"python reverse exercise correct status": (r) => r.status === 200,
 		"python reverse exercise correct result": (r) => checkCorrect(r),
 	};
-	return newPythonSolution(solution, check, 5);
+	return newPythonSolution(solution, check, 6);
 }
 
 // Wrong answer Python solution.
@@ -147,7 +147,7 @@ function wrongAnswerPython() {
 		"python reverse exercise wrong answer status": (r) => r.status === 400,
 		"python reverse exercise wrong answer result": (r) => checkWrongAnswer(r),
 	};
-	return newPythonSolution(solution, check, 5);
+	return newPythonSolution(solution, check, 6);
 }
 
 // Runtime error Python solution.
@@ -157,7 +157,7 @@ function runtimeErrorPython() {
 		"python reverse exercise runtime error status": (r) => r.status === 400,
 		"python reverse exercise runtime error result": (r) => checkRuntimeError(r),
 	};
-	return newPythonSolution(solution, check, 5);
+	return newPythonSolution(solution, check, 6);
 }
 
 // Syntax error Python solution.
@@ -167,7 +167,7 @@ function syntaxErrorPython() {
 		"python reverse exercise syntax error status": (r) => r.status === 400,
 		"python reverse exercise syntax error result": (r) => checkSyntaxError(r),
 	};
-	return newPythonSolution(solution, check, 5);
+	return newPythonSolution(solution, check, 6);
 }
 
 // Execution timeout Python solution.
@@ -179,5 +179,5 @@ function executionTimeoutPython() {
 		"python reverse exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 5);
+	return newHaskellSolution(solution, check, 6);
 }

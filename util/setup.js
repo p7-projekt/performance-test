@@ -8,7 +8,7 @@ import { distributeStudentsToSessions } from "./distributeStudents.js";
 import { getExercises } from "./generateExercise.js";
 
 export async function generateSetup(numberOfUsers, numberOfClassrooms) {
-	token = await login("admin@p7.dk", "Admin!1234");
+	let token = await login("admin@p7.dk", "Admin!1234");
 	let userIds = [];
 	userIds = await createRandomUsers(numberOfUsers);
 	console.log("User ids collected");
@@ -26,4 +26,3 @@ export async function generateSetup(numberOfUsers, numberOfClassrooms) {
 	console.log("Sessions in classrooms created");
 	return await distributeStudentsToSessions(userIds, classRoomIds, token);
 }
-

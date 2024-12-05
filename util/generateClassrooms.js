@@ -95,10 +95,10 @@ export async function activateClassroom(classNumber, token) {
 
 	// Check if the classroom was activated successfully
 	check(response, {
-		"classroom activated successfully": (r) => r.status === 200,
+		"classroom activated successfully": (r) => r.status === 204,
 	});
 
-	if (response.status !== 200) {
+	if (response.status !== 204) {
 		throw new Error(
 			"Error during classroom activation:",
 			response.status,

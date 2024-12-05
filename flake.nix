@@ -22,6 +22,7 @@
             buildInputs = [
               k6
               typescript-language-server
+              biome
             ];
           };
       }

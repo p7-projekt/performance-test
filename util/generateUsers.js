@@ -6,8 +6,13 @@ module.exports = { login, createRandomUsers };
 
 async function createRandomUsers(numberOfUsers){
     const results = []
+    let count = 50;
     for (let i = 1; i <= numberOfUsers; i++) {
         results.push(await createRandomUser(i));
+        if(i > count){
+          console.log("created users:", count);
+          count += 50;
+        }
     }
     return results;
 }

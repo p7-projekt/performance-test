@@ -29,7 +29,7 @@ export default function (data) {
 	};
 	delete exercise.payload.exerciseId;
 	exercise.payload.sessionId = user.sessionId;
-
+	console.log(exercise.payload);
 	const res = http.post(url, JSON.stringify(exercise.payload), params);
 	console.log("body: " + res.body);
 	check(res, exercise.check);

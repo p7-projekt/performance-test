@@ -95,9 +95,8 @@ function stringLengthExercise() {
 			break;
 		// execution timeout
 		case inRange(number, 0.05, 0.09):
-			// this solution eats RAM at an impressive rate (but is allowed by the user)
 			solution =
-				"def solution(s: str):\n    while True:\n        s = s + s\n    return s";
+				"def solution(s: str):\n    while True:\n        n = 1\n    return s";
 			check = {
 				"string length exercise python execution timeout status": (r) =>
 					r.status === 200,

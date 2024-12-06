@@ -1,8 +1,7 @@
 import http from "k6/http";
 import { check, sleep } from "k6";
 import { getExercise } from "../exercises/exercise.js";
-import { generateSetup } from "../util/setup.js";
-import { SharedArray} from "k6/data";
+import { SharedArray } from "k6/data";
 
 export const options = {
 	setupTimeout: "30m",
@@ -13,16 +12,13 @@ export const options = {
 	],
 };
 
-export function setup() {
-	return generateSetup(200, 2);
-}
-
-const sharedData = new SharedArray("userInfo", () => {
-    return setup();
+const data = new SharedArray("some name", function () {
+	const f = JSON.parse(open("./users.json"));
+	return f;
 });
 
 export default function () {
-	const user = sharedData[__VU];
+	const user = data[__VU];
 	let exercise = getExercise();
 	console.log(`HERE:${user.userId}, ${exercise.payload.exerciseId}`);
 	const url = `http://localhost:80/v2/exercises/${exercise.payload.exerciseId}/submission`;

@@ -6,9 +6,9 @@ import { SharedArray } from "k6/data";
 export const options = {
 	setupTimeout: "30m",
 	stages: [
-		{ duration: "1m", target: 200 },
-		{ duration: "5m", target: 200 },
-		{ duration: "1m", target: 0 },
+		{ duration: "10m", target: 4000 },
+		{ duration: "8h", target: 4000 },
+		{ duration: "10m", target: 0 },
 	],
 };
 
@@ -33,5 +33,5 @@ export default function () {
 	if (!check(res, exercise.check)) {
 		console.error("FAILED CHECK");
 	}
-	sleep(30);
+	sleep(180);
 }

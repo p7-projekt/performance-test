@@ -16,8 +16,12 @@ export function setup() {
 	return generateSetup(200, 2);
 }
 
-export default function (data) {
-	const user = data[__VU];
+const sharedData = new SharedArray("userInfo", () => {
+    return setup();
+});
+
+export default function () {
+	const user = sharedData[__VU];
 	let exercise = getExercise();
 	console.log(`HERE:${user.userId}, ${exercise.payload.exerciseId}`);
 	const url = `http://localhost:80/v2/exercises/${exercise.payload.exerciseId}/submission`;

@@ -66,7 +66,7 @@ export async function createRandomUser(number) {
 	});
 
 	if (response.status === 200) {
-		return login(email, password);
+		return await login(email, password);
 	} else {
 		throw new Error(`Registration failed:${response.status} - ${response.body}`);
 	}

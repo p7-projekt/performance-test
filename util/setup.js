@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 module.exports = { generateSetup };
 
 async function generateSetup(numberOfUsers, numberOfClassrooms){
-    token = await login("admin@p7.dk", "Admin!1234");
+    token = await login("Admin@p7.dk", "Admin!1234");
     let userIds = []
     userIds = await createRandomUsers(numberOfUsers);
     console.log("User ids collected");

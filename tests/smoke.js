@@ -28,12 +28,11 @@ export default function () {
 			Authorization: `Bearer ${user.userId}`,
 		},
 	};
+	const exeriseid = exercise.payload.exerciseId
 	delete exercise.payload.exerciseId;
 	exercise.payload.sessionId = user.sessionId;
-	console.log("dddddd", exercise.payload);
 	const res = http.post(url, JSON.stringify(exercise.payload), params);
-	console.log("status:", res.status);
-	console.log("body: " + res.body);
+	console.log("response status:", exercise.payload.solution, exeriseid, res.status, res.body);
 	check(res, exercise.check);
 	sleep(30);
 }

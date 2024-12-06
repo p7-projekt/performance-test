@@ -93,12 +93,20 @@ export function checkWrongAnswer(response) {
 
 // Checks a runtime error solutions response.
 export function checkRuntimeError(response) {
-	return (
-		response.json().result === "failure" &&
-		response
-			.json()
-			.testCaseResults.some((testCase) => testCase.cause === "runtimeError")
-	);
+	const json = JSON.parse(response.json());
+	let runtimeError = false;
+
+	console.log("RUNTIME ERROR CHECK: " + json.testCaseResults);
+
+	for (let i = 0; i < json.testCaseResults.length; i++) {
+		let testCase = json.testCaseResults[i];
+		if (testCase.cause === "runtimeError") {
+			runtimeError = true;
+			break;
+		}
+	}
+
+	return json.result === "failure" && runtimeError;
 }
 
 // Checks a compile time error solutions response.

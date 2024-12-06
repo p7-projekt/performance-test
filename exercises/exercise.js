@@ -75,9 +75,20 @@ export function checkCorrect(response) {
 
 // Checks a wrong answer solutions response.
 export function checkWrongAnswer(response) {
-	return response
-		.json()
-		.testCaseResults.some((testCase) => testCase.cause === "wrongAnswer");
+	const json = response.json();
+	let wrongAnswer = false;
+
+	console.log("WRONG ANSWER CHECK: " + json.testCaseResults);
+
+	for (let i = 0; i < json.testCaseResults.length; i++) {
+		let testCase = json.testCaseResults[i];
+		if (testCase.cause === "wrongAnswer") {
+			wrongAnswer = true;
+			break;
+		}
+	}
+
+	return json.result === "failure" && wrongAnswer;
 }
 
 // Checks a runtime error solutions response.

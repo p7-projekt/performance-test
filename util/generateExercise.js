@@ -1,4 +1,6 @@
-export function getExercises() {
+module.exports = {getExercises};
+
+function getExercises() {
 	let exercises = [
 		absoluteValue(), // id 0 (increasing)
 		area(),

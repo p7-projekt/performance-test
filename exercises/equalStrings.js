@@ -189,5 +189,5 @@ function executionTimeoutPython() {
 		"python equal strings exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 4);
+	return newPythonSolution(solution, check, 4);
 }

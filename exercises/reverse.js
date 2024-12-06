@@ -49,10 +49,10 @@ function haskellExercise() {
 // Correct Haskell solution.
 function correctHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Bool\nsolution s = reverse s";
+		"module Solution where\n\nsolution :: String -> String\nsolution s = reverse s";
 	const check = {
-		"haskell reverse exercise status": (r) => r.status === 200,
-		"haskell reverse exercise result": (r) => checkCorrect(r),
+		"haskell reverse exercise correct status": (r) => r.status === 200,
+		"haskell reverse exercise correct result": (r) => checkCorrect(r),
 	};
 	return newHaskellSolution(solution, check, 6);
 }
@@ -60,7 +60,7 @@ function correctHaskell() {
 // Wrong answer Haskell solution.
 function wrongAnswerHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Bool\nsolution s = s";
+		"module Solution where\n\nsolution :: String -> String\nsolution s = s";
 	const check = {
 		"haskell reverse exercise wrong answer status": (r) => r.status === 400,
 		"haskell reverse exercise wrong answer result": (r) => checkWrongAnswer(r),
@@ -71,7 +71,7 @@ function wrongAnswerHaskell() {
 // Runtime error Haskell solution.
 function runtimeErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Bool\nsolution s = head []";
+		"module Solution where\n\nsolution :: String -> String\nsolution s = head []";
 	const check = {
 		"haskell reverse exercise runtime error status": (r) => r.status === 400,
 		"haskell reverse exercise runtime error result": (r) =>
@@ -83,7 +83,7 @@ function runtimeErrorHaskell() {
 // Compilation error Haskell solution.
 function compilationErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Bool\nsolution s =";
+		"module Solution where\n\nsolution :: String -> String\nsolution s =";
 	const check = {
 		"haskell reverse exercise compilation error status": (r) =>
 			r.status === 400,
@@ -96,7 +96,7 @@ function compilationErrorHaskell() {
 // Execution timeout Haskell solution.
 function executionTimeoutHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Bool\nsolution s = solution s";
+		"module Solution where\n\nsolution :: String -> String\nsolution s = solution s";
 	const check = {
 		"haskell reverse exercise execution timeout status": (r) =>
 			r.status === 400,

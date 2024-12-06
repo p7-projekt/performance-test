@@ -2,7 +2,7 @@ const { generateSetup } = require('../util/setup.js');
 const fs = require('fs');
 
 async function main() {
-const data = JSON.stringify(await generateSetup(200,2));
+const data = JSON.stringify(await generateSetup(20000,60));
 
 fs.writeFile('users.json', data, (err) => {
     if (err) {

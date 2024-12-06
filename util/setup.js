@@ -2,6 +2,7 @@ const { login, createRandomUsers } = require('./generateUsers');
 const { generateRandomClassrooms } = require('./generateClassrooms');
 const { createSessionsForAllClassrooms } = require('./generateSessions');
 const { getExercises} = require('./generateExercise');
+const fetch = require('node-fetch');
 
 module.exports = { generateSetup };
 

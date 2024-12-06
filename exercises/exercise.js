@@ -111,24 +111,30 @@ export function checkRuntimeError(response) {
 
 // Checks a compile time error solutions response.
 export function checkCompileError(response) {
+	const json = JSON.parse(response.json());
+
 	return (
-		response.json().result === "error" &&
-		response.json().message.startsWith("an error occurred during compilation")
+		json.result === "error" &&
+		json.message.startsWith("an error occurred during compilation")
 	);
 }
 
 // Checks an execution timeout solutions response.
 export function checkExecutionTimeout(response) {
+	const json = JSON.parse(response.json());
+
 	return (
-		response.json().result === "error" &&
-		response.json().message === "execution exceeded the timeout limit of 5s"
+		json.result === "error" &&
+		json.message === "execution exceeded the timeout limit of 5s"
 	);
 }
 
 // Checks a syntax error solutions response.
 export function checkSyntaxError(response) {
+	const json = JSON.parse(response.json());
+
 	return (
-		response.json().result === "error" &&
-		response.json().message.startsWith("an error occured during execution")
+		json.result === "error" &&
+		json.message.startsWith("an error occured during execution")
 	);
 }

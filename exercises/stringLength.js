@@ -73,7 +73,7 @@ function wrongAnswerHaskell() {
 // Runtime error Haskell solution.
 function runtimeErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution s = 1 + solution (head s)";
+		"module Solution where\n\nsolution :: String -> Int\nsolution s = 1 + solution ([head []] ++ [head []])";
 	const check = {
 		"haskell string length exercise runtime error status": (r) =>
 			r.status === 400,
@@ -99,7 +99,7 @@ function compilationErrorHaskell() {
 // Execution timeout Haskell solution.
 function executionTimeoutHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: Int -> Int\nsolution s = solution s";
+		"module Solution where\n\nsolution :: String -> Int\nsolution s = solution s";
 	const check = {
 		"haskell string length exercise execution timeout status": (r) =>
 			r.status === 400,
@@ -189,5 +189,5 @@ function executionTimeoutPython() {
 		"python string length exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 9);
+	return newPythonSolution(solution, check, 9);
 }

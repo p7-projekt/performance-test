@@ -184,5 +184,5 @@ function executionTimeoutPython() {
 		"python palindrome exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 5);
+	return newPythonSolution(solution, check, 5);
 }

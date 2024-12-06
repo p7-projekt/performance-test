@@ -73,7 +73,7 @@ function wrongAnswerHaskell() {
 // Runtime error Haskell solution.
 function runtimeErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: Int -> String\nsolution n = n `div` 0";
+		"module Solution where\n\nsolution :: Int -> String\nsolution n = show (n `div` 0)";
 	const check = {
 		"haskell sign detector exercise runtime error status": (r) =>
 			r.status === 400,
@@ -190,5 +190,5 @@ function executionTimeoutPython() {
 		"python sign detector exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 7);
+	return newPythonSolution(solution, check, 7);
 }

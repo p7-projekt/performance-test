@@ -28,11 +28,19 @@ export default function () {
 			Authorization: `Bearer ${user.userId}`,
 		},
 	};
-	const exeriseid = exercise.payload.exerciseId
+	const exeriseid = exercise.payload.exerciseId;
 	delete exercise.payload.exerciseId;
 	exercise.payload.sessionId = user.sessionId;
 	const res = http.post(url, JSON.stringify(exercise.payload), params);
-	console.log("response status:", exercise.payload.solution, exeriseid, res.status, res.body);
-	check(res, exercise.check);
+	console.log(
+		"response status:",
+		exercise.payload.solution,
+		exeriseid,
+		res.status,
+		res.body,
+	);
+	if (!check(res, exercise.check)) {
+		console.error("FAILED CHECK");
+	}
 	sleep(30);
 }

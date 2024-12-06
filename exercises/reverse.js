@@ -179,5 +179,5 @@ function executionTimeoutPython() {
 		"python reverse exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 6);
+	return newPythonSolution(solution, check, 6);
 }

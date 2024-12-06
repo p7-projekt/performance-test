@@ -2,6 +2,7 @@ import http from "k6/http";
 import { check, sleep } from "k6";
 import { getExercise } from "../exercises/exercise.js";
 import { generateSetup } from "../util/setup.js";
+import { SharedArray} from "k6/data";
 
 export const options = {
 	setupTimeout: "30m",

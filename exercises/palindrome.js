@@ -60,7 +60,7 @@ function correctHaskell() {
 // Wrong answer Haskell solution.
 function wrongAnswerHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Bool\nsolution s = s";
+		"module Solution where\n\nsolution :: String -> Bool\nsolution s = True";
 	const check = {
 		"haskell palindrome exercise wrong answer status": (r) => r.status === 400,
 		"haskell palindrome exercise wrong answer result": (r) =>

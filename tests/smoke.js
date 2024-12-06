@@ -18,7 +18,7 @@ const data = new SharedArray("some name", function () {
 });
 
 export default function () {
-	const user = data[__VU];
+	const user = data[__VU - 1];
 	let exercise = getExercise();
 	console.log(`HERE:${user.userId}, ${exercise.payload.exerciseId}`);
 	const url = `http://localhost:80/v2/exercises/${exercise.payload.exerciseId}/submission`;

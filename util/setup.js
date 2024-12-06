@@ -22,7 +22,7 @@ async function generateSetup(numberOfUsers, numberOfClassrooms){
 }
 
 async function fetchClassroomDetails(token, classroomId) {
-    const url = `http://localhost:5015/v2/classrooms/${classroomId}`;
+    const url = `http://localhost:80/v2/classrooms/${classroomId}`;
   
     const options = {
       method: 'GET',
@@ -45,7 +45,7 @@ async function fetchClassroomDetails(token, classroomId) {
   
 
   async function joinClassroom(token, roomCode) {
-    const url = 'http://localhost:5015/join';
+    const url = 'http://localhost:80/join';
     const options = {
       method: 'POST',
       headers: {
@@ -130,7 +130,7 @@ async function fetchClassroomDetails(token, classroomId) {
   }
 
   async function createExercises(exercises, token) {
-	const url = "http://localhost:5015/v1/exercises";
+	const url = "http://localhost:80/v1/exercises";
   
 	// Iterate over the exercises array and send a POST request for each
 	for (const exercise of exercises) {

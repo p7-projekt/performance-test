@@ -13,7 +13,7 @@ async function createRandomUsers(numberOfUsers){
 }
 
 async function createRandomUser(number) {
-    const url = 'http://localhost:5015/register'; //we need to update to correct k9s service
+    const url = 'http://localhost:80/register'; //we need to update to correct k9s service
     const email = generateRandomEmail(number);
     const password = generatePassword();
     const confirmPassword = password;
@@ -38,7 +38,7 @@ async function createRandomUser(number) {
   }
 
   async function login(email, password) {
-    const url = 'http://localhost:5015/login';
+    const url = 'http://localhost:80/login';
   
     const options = {
       method: 'POST',

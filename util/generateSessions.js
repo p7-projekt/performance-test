@@ -5,7 +5,7 @@ const { generateRandomString } = require('./randomGenerators.js');
 module.exports = { createSessionsForAllClassrooms };
 
 async function createSession(token, classroomId, sessionNumber) {
-    const url = `http://localhost:5015/v2/classrooms/${classroomId}/session`;
+    const url = `http://localhost:80/v2/classrooms/${classroomId}/session`;
   
     // Generate session data directly inside this function
     const sessionData = {

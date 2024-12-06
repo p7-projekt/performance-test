@@ -75,7 +75,7 @@ export function checkCorrect(response) {
 
 // Checks a wrong answer solutions response.
 export function checkWrongAnswer(response) {
-	const json = response.json();
+	const json = JSON.parse(response.json());
 	let wrongAnswer = false;
 
 	console.log("WRONG ANSWER CHECK: " + json.testCaseResults);

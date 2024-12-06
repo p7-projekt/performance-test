@@ -1,4 +1,4 @@
-import { generateSetup } from "../util/setup.js";
+const { generateSetup } = require('../util/setup.js');
 const fs = require('fs');
 
 async function main() {

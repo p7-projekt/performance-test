@@ -72,7 +72,7 @@ function wrongAnswerHaskell() {
 // Runtime error Haskell solution.
 function runtimeErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution s = 1 + solution ([head s] ++ [head s])";
+		"module Solution where\n\nsolution :: String -> Int\nsolution s = 1 + solution ([head []] ++ [head []])";
 	const check = {
 		"haskell vowel count exercise runtime error status": (r) =>
 			r.status === 400,

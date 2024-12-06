@@ -73,7 +73,7 @@ function wrongAnswerHaskell() {
 // Runtime error Haskell solution.
 function runtimeErrorHaskell() {
 	const solution =
-		"module Solution where\n\nsolution :: String -> Int\nsolution s = 1 + solution (head s)";
+		"module Solution where\n\nsolution :: String -> Int\nsolution s = 1 + solution (head s ++ head s)";
 	const check = {
 		"haskell string length exercise runtime error status": (r) =>
 			r.status === 400,

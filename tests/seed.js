@@ -12,3 +12,4 @@ fs.writeFile('users.json', data, (err) => {
     }
   });
 }
+main();

@@ -186,5 +186,5 @@ function executionTimeoutPython() {
 		"python vowel count exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 10);
+	return newPythonSolution(solution, check, 10);
 }

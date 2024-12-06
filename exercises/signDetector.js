@@ -190,5 +190,5 @@ function executionTimeoutPython() {
 		"python sign detector exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 7);
+	return newPythonSolution(solution, check, 7);
 }

@@ -176,5 +176,5 @@ function executionTimeoutPython() {
 		"python area exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 2);
+	return newPythonSolution(solution, check, 2);
 }

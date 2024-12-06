@@ -24,5 +24,5 @@ export async function generateSetup(numberOfUsers, numberOfClassrooms) {
 	//Generate sessions on classrooms
 	await createSessionsForAllClassrooms(classRoomIds, token);
 	console.log("Sessions in classrooms created");
-	return await distributeStudentsToSessions(userIds, classRoomIds, token);
+	console.log (await distributeStudentsToSessions(userIds, classRoomIds, token));
 }

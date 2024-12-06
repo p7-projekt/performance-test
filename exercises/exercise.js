@@ -70,7 +70,7 @@ export function getExercise() {
 
 // Checks a correct solutions response.
 export function checkCorrect(response) {
-	return response.json().result === "pass";
+	return response.body.length === 0;
 }
 
 // Checks a wrong answer solutions response.

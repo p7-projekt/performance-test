@@ -8,14 +8,14 @@ import {
 	checkExecutionTimeout,
 	checkRuntimeError,
 	checkSyntaxError,
+	HASKELL_EXERCISE_RATE,
 } from "./exercise.js";
 
 // Gets a Python or Haskell solution attempt for the Equal Strings exercise.
 export function equalStringsExercise() {
-	const number = Math.round(Math.random());
+	const number = Math.random();
 
-	// 50/50 split between Python and Haskell solutions.
-	if (number == 0) {
+	if (number < HASKELL_EXERCISE_RATE) {
 		return haskellExercise();
 	} else {
 		return pythonExercise();

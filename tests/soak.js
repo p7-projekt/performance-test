@@ -4,6 +4,7 @@ import { getExercise } from "../exercises/exercise.js";
 import { SharedArray } from "k6/data";
 
 export const options = {
+	noConnectionReuse: true,
 	setupTimeout: "30m",
 	stages: [
 		{ duration: "10m", target: 4000 },

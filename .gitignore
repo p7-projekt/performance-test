@@ -1,3 +1,5 @@
 # direnv
 .envrc
 .direnv
+.html
+.json

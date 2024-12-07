@@ -1,7 +1,15 @@
-import { check } from 'k6';
-import http from 'k6/http';
-import { generateSetup } from "../util/setup.js";
+const { generateSetup } = require('../util/setup.js');
+const fs = require('fs');
 
-export default function () {
-generateSetup(10,1);
+async function main() {
+const data = JSON.stringify(await generateSetup(20000,60));
+
+fs.writeFile('users.json', data, (err) => {
+    if (err) {
+      console.error('Error writing to file:', err);
+    } else {
+      console.log('Data has been written to the file successfully!');
+    }
+  });
 }
+main();

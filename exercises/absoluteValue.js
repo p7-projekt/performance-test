@@ -190,5 +190,5 @@ function executionTimeoutPython() {
 		"python absolute value exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 1);
+	return newPythonSolution(solution, check, 1);
 }

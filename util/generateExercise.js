@@ -1,4 +1,6 @@
-export function getExercises() {
+module.exports = { getExercises };
+
+function getExercises() {
 	let exercises = [
 		absoluteValue(), // id 0 (increasing)
 		area(),
@@ -23,7 +25,7 @@ function absoluteValue() {
 			"def solution(n: int):\n    if n < 0:\n        return n * (-1)\n    else:        return n",
 		solutionLanguage: 2,
 		inputParameterType: ["int"],
-		outputParamaterType: ["int"],
+		outputParameterType: ["int"],
 		testcases: [
 			{
 				inputParams: ["-5"],
@@ -51,7 +53,7 @@ function area() {
 		solution: "def solution(h: int, w: int):\n    return h * w",
 		solutionLanguage: 2,
 		inputParameterType: ["int", "int"],
-		outputParamaterType: ["int"],
+		outputParameterType: ["int"],
 		testcases: [
 			{
 				inputParams: ["5", "20"],
@@ -79,7 +81,7 @@ function doubleString() {
 		solution: "def solution(s: str):\n    return s + s",
 		solutionLanguage: 2,
 		inputParameterType: ["string"],
-		outputParamaterType: ["string"],
+		outputParameterType: ["string"],
 		testcases: [
 			{
 				inputParams: [""],
@@ -107,7 +109,7 @@ function equalStrings() {
 		solution: "def solution(s1: str, s2: str):\n    return s1 == s2",
 		solutionLanguage: 2,
 		inputParameterType: ["string", "string"],
-		outputParamaterType: ["bool"],
+		outputParameterType: ["bool"],
 		testcases: [
 			{
 				inputParams: ["", ""],
@@ -140,7 +142,7 @@ function palindrome() {
 		solution: "def solution(s: str):\n    return s == s[::-1]",
 		solutionLanguage: 2,
 		inputParameterType: ["string"],
-		outputParamaterType: ["bool"],
+		outputParameterType: ["bool"],
 		testcases: [
 			{
 				inputParams: ["regninger"],
@@ -168,7 +170,7 @@ function reverse() {
 		solution: "def solution(s: str):\n    return s[::-1]",
 		solutionLanguage: 2,
 		inputParameterType: ["string"],
-		outputParamaterType: ["string"],
+		outputParameterType: ["string"],
 		testcases: [
 			{
 				inputParams: [""],
@@ -197,7 +199,7 @@ function signDetector() {
 			'def solution(n: int):\n    return "positive" if n > 0 else "negative" if n < 0 else "zero"',
 		solutionLanguage: 2,
 		inputParameterType: ["int"],
-		outputParamaterType: ["string"],
+		outputParameterType: ["string"],
 		testcases: [
 			{
 				inputParams: ["5"],
@@ -225,7 +227,7 @@ function squareNumber() {
 		solution: "def solution(n: int):\n    return n * n",
 		solutionLanguage: 2,
 		inputParameterType: ["int"],
-		outputParamaterType: ["int"],
+		outputParameterType: ["int"],
 		testcases: [
 			{
 				inputParams: ["5"],
@@ -253,7 +255,7 @@ function stringLength() {
 		solution: "def solution(s: str):\n    return len(s)",
 		solutionLanguage: 2,
 		inputParameterType: ["string"],
-		outputParamaterType: ["int"],
+		outputParameterType: ["int"],
 		testcases: [
 			{
 				inputParams: ["hello"],
@@ -282,7 +284,7 @@ function vowelCount() {
 			"def solution(s: str):\n    return sum(c in 'aeiouAEIOU' for c in s)",
 		solutionLanguage: 2,
 		inputParameterType: ["string"],
-		outputParamaterType: ["int"],
+		outputParameterType: ["int"],
 		testcases: [
 			{
 				inputParams: ["hello"],

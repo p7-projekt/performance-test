@@ -189,5 +189,5 @@ function executionTimeoutPython() {
 		"python double string exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 3);
+	return newPythonSolution(solution, check, 3);
 }

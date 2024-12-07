@@ -75,41 +75,66 @@ export function checkCorrect(response) {
 
 // Checks a wrong answer solutions response.
 export function checkWrongAnswer(response) {
-	return response
-		.json()
-		.testCaseResults.some((testCase) => testCase.cause === "wrongAnswer");
+	const json = JSON.parse(response.json());
+	let wrongAnswer = false;
+
+	console.log("WRONG ANSWER CHECK: " + json.testCaseResults);
+
+	for (let i = 0; i < json.testCaseResults.length; i++) {
+		let testCase = json.testCaseResults[i];
+		if (testCase.cause === "wrongAnswer") {
+			wrongAnswer = true;
+			break;
+		}
+	}
+
+	return json.result === "failure" && wrongAnswer;
 }
 
 // Checks a runtime error solutions response.
 export function checkRuntimeError(response) {
-	return (
-		response.json().result === "failure" &&
-		response
-			.json()
-			.testCaseResults.some((testCase) => testCase.cause === "runtimeError")
-	);
+	const json = JSON.parse(response.json());
+	let runtimeError = false;
+
+	console.log("RUNTIME ERROR CHECK: " + json.testCaseResults);
+
+	for (let i = 0; i < json.testCaseResults.length; i++) {
+		let testCase = json.testCaseResults[i];
+		if (testCase.cause === "runtimeError") {
+			runtimeError = true;
+			break;
+		}
+	}
+
+	return json.result === "failure" && runtimeError;
 }
 
 // Checks a compile time error solutions response.
 export function checkCompileError(response) {
+	const json = JSON.parse(response.json());
+
 	return (
-		response.json().result === "error" &&
-		response.json().message.startsWith("an error occurred during compilation")
+		json.result === "error" &&
+		json.message.startsWith("an error occurred during compilation")
 	);
 }
 
 // Checks an execution timeout solutions response.
 export function checkExecutionTimeout(response) {
+	const json = JSON.parse(response.json());
+
 	return (
-		response.json().result === "error" &&
-		response.json().message === "execution exceeded the timeout limit of 5s"
+		json.result === "error" &&
+		json.message === "execution exceeded the timeout limit of 5s"
 	);
 }
 
 // Checks a syntax error solutions response.
 export function checkSyntaxError(response) {
+	const json = JSON.parse(response.json());
+
 	return (
-		response.json().result === "error" &&
-		response.json().message.startsWith("an error occured during execution")
+		json.result === "error" &&
+		json.message.startsWith("an error occured during execution")
 	);
 }

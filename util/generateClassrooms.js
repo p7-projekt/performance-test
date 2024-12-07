@@ -1,101 +1,97 @@
-import http from "k6/http";
-import { check } from "k6";
-import { generateRandomString } from "./randomGenerators.js";
+const fetch = require('node-fetch');
+const { generateRandomString } = require('./randomGenerators.js');
 
-export async function generateRandomClassrooms(numberOfClassrooms, token) {
-	for (let i = 1; i <= numberOfClassrooms; i++) {
-		await createRandomClassroom(i, token);
-		await activateClassroom(i, token);
-	}
-	return await fetchClassroomIds(token);
+
+module.exports = { generateRandomClassrooms };
+
+async function generateRandomClassrooms(numberOfClassrooms, token){
+  for (let i = 1; i <= numberOfClassrooms; i++) {
+    await createRandomClassroom(i, token);
+    await activateClassroom(i, token);
+  }
+  return await fetchClassroomIds(token);
 }
 
-export async function createRandomClassroom(classNumber, token) {
-	const url = "http://localhost:80/v2/classrooms";
-	const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
-	const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
-
-	const payload = JSON.stringify({
-		title,
-		description,
-	});
-
-	const options = {
-		headers: {
-			"Content-Type": "application/json",
-			Authorization: `Bearer ${token}`,
-		},
-	};
-
-	const response = http.post(url, payload, options);
-
-	// Check if the classroom was created successfully
-	check(response, {
-		"classroom created successfully": (r) => r.status === 201,
-	});
-
-	if (response.status !== 201) {
-		throw new Error(
-			`Error during classroom creation:${response.status}, ${response.body}`
-		);
-	}
+async function createRandomClassroom(classNumber, token) {
+    const url = 'http://localhost:80/v2/classrooms';
+    const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
+    const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
+  
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`, // Add Bearer token for authorization
+      },
+      body: JSON.stringify({
+        title,
+        description,
+      }),
+    };
+    try {
+      const response = await fetch(url, options);
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+    } catch (error) {
+		throw new Error('Error during classroom creation:', error);
+    }
 }
 
-export async function fetchClassroomIds(token) {
-	const url = "http://localhost:80/v2/classrooms";
+async function fetchClassroomIds(token) {
+  const url = 'http://localhost:80/v2/classrooms';
 
-	const options = {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	};
+  const options = {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`, // Add Bearer token for authorization
+    },
+  };
 
-	const response = http.get(url, options);
+  try {
+    const response = await fetch(url, options);
 
-	// Check if the classroom IDs were fetched successfully
-	check(response, {
-		"classroom IDs fetched successfully": (r) => r.status === 200,
-	});
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-	if (response.status === 200) {
-		const classrooms = JSON.parse(response.body);
-		const ids = classrooms.map((classroom) => classroom.id);
-		return ids;
-	} else {
-		throw new Error(
-			`Error fetching classroom IDs:${response.status}, ${response.body}`
-		);
-	}
+    const classrooms = await response.json();
+    const ids = classrooms.map((classroom) => classroom.id);
+    return ids;
+  } catch (error) {
+    throw new Error('Error fetching classroom IDs:', error);
+  }
 }
 
-export async function activateClassroom(classNumber, token) {
-	const url = `http://localhost:80/v2/classrooms/${classNumber}`;
-	const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
-	const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
-	const registrationOpen = true;
+async function activateClassroom(classNumber, token) {
+  const url = `http://localhost:80/v2/classrooms/${classNumber}`;
+  const title = generateRandomString(classNumber, 60); // Title longer than 10 characters
+  const description = generateRandomString(classNumber, 20); // Description longer than 10 characters
+  const registrationOpen = true
 
-	const payload = JSON.stringify({
-		title,
-		description,
-		registrationOpen,
-	});
+  const options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`, // Add Bearer token for authorization
+    },
+    body: JSON.stringify({
+      title,
+      description,
+      registrationOpen,
+    }),
+  };
+  try {
+    const response = await fetch(url, options);
 
-	const options = {
-		headers: {
-			"Content-Type": "application/json",
-			Authorization: `Bearer ${token}`,
-		},
-	};
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-	const response = http.put(url, payload, options);
-
-	// Check if the classroom was activated successfully
-	check(response, {
-		"classroom activated successfully": (r) => r.status === 204,
-	});
-
-	if (response.status !== 204) {
-		throw new Error(
-			`Error during classroom activation: ${response.status}`);
-	}
+  } catch (error) {
+    console.error('Error during classroom opening:', error);
+    throw error;
+  }
 }

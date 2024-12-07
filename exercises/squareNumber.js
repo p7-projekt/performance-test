@@ -189,5 +189,5 @@ function executionTimeoutPython() {
 		"python square number exercise execution timeout result": (r) =>
 			checkExecutionTimeout(r),
 	};
-	return newHaskellSolution(solution, check, 8);
+	return newPythonSolution(solution, check, 8);
 }

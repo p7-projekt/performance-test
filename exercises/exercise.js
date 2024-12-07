@@ -80,7 +80,7 @@ export function checkWrongAnswer(response) {
 	const json = JSON.parse(response.json());
 	let wrongAnswer = false;
 
-	console.log("WRONG ANSWER CHECK: " + json.testCaseResults);
+	//console.log("WRONG ANSWER CHECK: " + json.testCaseResults);
 
 	for (let i = 0; i < json.testCaseResults.length; i++) {
 		let testCase = json.testCaseResults[i];

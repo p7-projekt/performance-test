@@ -9,7 +9,7 @@ import { areaExercise } from "./area.js";
 import { equalStringsExercise } from "./equalStrings.js";
 import { signDetectorExercise } from "./signDetector.js";
 
-export const HASKELL_EXERCISE_RATE = 0.0;
+export const HASKELL_EXERCISE_RATE = 0.1;
 
 export function newHaskellSolution(solution, check, exerciseId) {
 	return {

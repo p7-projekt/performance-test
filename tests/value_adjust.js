@@ -33,5 +33,5 @@ export default function () {
 	if (!check(res, exercise.check)) {
 		console.error("FAILED CHECK");
 	}
-	sleep(30);
+	sleep(180);
 }

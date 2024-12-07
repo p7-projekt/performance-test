@@ -98,7 +98,7 @@ export function checkRuntimeError(response) {
 	const json = JSON.parse(response.json());
 	let runtimeError = false;
 
-	console.log("RUNTIME ERROR CHECK: " + json.testCaseResults);
+	//console.log("RUNTIME ERROR CHECK: " + json.testCaseResults);
 
 	for (let i = 0; i < json.testCaseResults.length; i++) {
 		let testCase = json.testCaseResults[i];
